@@ -1,6 +1,8 @@
 import React from 'react';
 import AnujGupta from '../assets/images/anuj_gupta_pro.jpg';
-import { FaLinkedin, FaTwitter, FaGlobe, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { SiSubstack } from 'react-icons/si';
 
 function Sidebar() {
   return (
@@ -48,7 +50,7 @@ function Sidebar() {
           {/* First row - Professional networks */}
           <div className="flex space-x-5">
             <a href="https://www.linkedin.com/in/anujgupta-82/"
-               className="text-gray-600 hover:text-blue-700 transition-colors duration-300"
+               className="text-[#0077B5] hover:text-[#005582] transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="LinkedIn"
@@ -56,15 +58,15 @@ function Sidebar() {
                 <FaLinkedin className="w-5 h-5" />
             </a>
             <a href="https://twitter.com/anujgupta82"
-               className="text-gray-600 hover:text-blue-400 transition-colors duration-300"
+               className="text-black hover:text-gray-800 transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
-               aria-label="Twitter"
+               aria-label="X (Twitter)"
             >
-                <FaTwitter className="w-5 h-5" />
+                <FaXTwitter className="w-5 h-5" />
             </a>
             <a href="https://github.com/anujgupta82"
-               className="text-gray-600 hover:text-gray-800 transition-colors duration-300"
+               className="text-[#333] hover:text-black transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="GitHub"
@@ -76,22 +78,22 @@ function Sidebar() {
           {/* Second row - Publications/Company */}
           <div className="flex space-x-5">
             <a href="https://gradient-advisors.ai/"
-               className="text-gray-600 hover:text-purple-600 transition-colors duration-300"
+               className="text-[#6e45e2] hover:text-[#4d2bb8] transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="Gradient Advisors"
             >
-                <FaGlobe className="w-5 h-5" />
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L4 7v10l8 5 8-5V7L12 2zm0 2.5L18 8v8l-6 3.5-6-3.5V8l6-3.5z"/>
+                </svg>
             </a>
             <a href="https://substack.com/@gradientadvisors"
-               className="text-gray-600 hover:text-orange-600 transition-colors duration-300"
+               className="text-[#FF6719] hover:text-[#e05a14] transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="Substack"
             >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 7.535V16.12c0 .63-.2 1.2-.55 1.65-.35.45-.85.75-1.4.8-1.9.2-4.45.43-7.3.43-2.85 0-5.4-.23-7.3-.43-.55-.05-1.05-.35-1.4-.8-.35-.45-.55-1.02-.55-1.65V7.535c0-.45.15-.85.4-1.15.25-.3.6-.45 1-.45.05 0 .1 0 .15.01 2.1.25 4.8.39 7.7.39 2.9 0 5.6-.14 7.7-.39.05-.01.1-.01.15-.01.4 0 .75.15 1 .45.25.3.4.7.4 1.15zM12 15.39l6.2-3.84-6.2-3.84-6.2 3.84 6.2 3.84z"/>
-                </svg>
+                <SiSubstack className="w-5 h-5" />
             </a>
           </div>
         </div>
