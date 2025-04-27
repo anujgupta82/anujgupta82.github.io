@@ -1,0 +1,494 @@
+import React, { useState } from 'react';
+import { CheckCircle, FileText, Book, Archive, Link2, Award, Calendar, Search, FileCheck } from 'lucide-react';
+
+function PublicationPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  // Publications in reverse chronological order (most recent first)
+  const publications = [
+    {
+      id: 1,
+      type: 'paper',
+      title: 'Noisy Text Data: Achilles\' Heel of popular transformer based NLP models',
+      year: '2021',
+      url: 'https://arxiv.org/abs/2110.03353',
+      authors: [
+        { name: 'Kartikay Bagla', url: 'http://linkedin.com/in/kartikay-bagla-60638a167' },
+        { name: 'Ankit Kumar', url: 'http://linkedin.com/in/ankit-ahlawat' },
+        { name: 'Shivam Gupta', url: 'https://www.linkedin.com/in/shmgupta/' },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
+      ],
+      description: 'Investigates the impact of noisy text on transformer models performance across multiple NLP tasks.',
+      links: [
+        { type: 'pdf', label: 'PDF', url: 'https://arxiv.org/pdf/2110.03353.pdf', icon: FileText },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://arxiv2bibtex.org/?q=2110.03353', icon: Book },
+        { type: 'arxiv', label: 'arXiv:2110.03353', url: 'https://arxiv.org/abs/2110.03353', icon: Archive },
+      ]
+    },
+    {
+      id: 2,
+      type: 'book',
+      title: 'Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems',
+      year: '2020',
+      url: 'https://www.oreilly.com/library/view/practical-natural-language/9781492054047/',
+      authors: [
+        { name: 'Sowmya Vajjala', url: null },
+        { name: 'Bodhisattwa Majumder', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Harshit Surana', url: null }
+      ],
+      description: 'Book on practical aspects of implementing NLP systems, published by O\'Reilly Media.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10/gjzgqh', icon: Book },
+      ]
+    },
+    {
+      id: 3,
+      type: 'paper',
+      title: 'hinglishNorm - A Corpus of Hindi-English Code Mixed Sentences for Text Normalization',
+      year: '2020',
+      url: '#',
+      venue: 'COLING in Online 2020',
+      authors: [
+        { name: 'Piyush Makhija', url: null },
+        { name: 'Ankit Kumar', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
+      ],
+      description: 'Presents a corpus for text normalization of Hindi-English code-mixed text.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/g2h5', url: 'https://doi.org/10/g2h5', icon: Link2 },
+        { type: 'conference', label: 'COLING 2020', url: 'https://coling2020.org/', icon: Calendar },
+      ]
+    },
+    {
+      id: 4,
+      type: 'paper',
+      title: 'Noisy Text Data: Achilles\' Heel of BERT',
+      year: '2020',
+      url: '#',
+      venue: 'W-NUT@EMNLP in Online 2020',
+      authors: [
+        { name: 'Ankit Kumar', url: null },
+        { name: 'Piyush Makhija', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
+      ],
+      description: 'Examines how noisy text affects BERT performance.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/gjzgqh', url: 'https://doi.org/10/gjzgqh', icon: Link2 },
+        { type: 'conference', label: 'W-NUT@EMNLP 2020', url: 'https://noisy-text.github.io/2020/', icon: Calendar },
+      ]
+    },
+    {
+      id: 5,
+      type: 'patent',
+      title: 'Noise Reduction And Smart Ticketing For Social Media-based Communication Systems',
+      year: '2019',
+      url: '#',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Saurabh Arora', url: null },
+        { name: 'Satyam Saxena', url: null },
+        { name: 'Navaneethan Santhanam', url: null }
+      ],
+      description: 'Patent for noise reduction in social media communications.',
+      organization: 'Freshworks Inc',
+      links: [
+        { type: 'pdf', label: 'PDF', url: '#', icon: FileText },
+        { type: 'article', label: 'Article', url: '#', icon: FileCheck },
+      ]
+    },
+    {
+      id: 6,
+      type: 'patent',
+      title: 'Named entity recognition from short unstructured text',
+      year: '2019',
+      url: '#',
+      authors: [
+        { name: 'Navaneethan Santhanam', url: null },
+        { name: 'Saurabh Arora', url: null },
+        { name: 'Satyam Saxena', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
+      ],
+      description: 'Patent for named entity recognition in short texts.',
+      organization: 'Freshworks Inc',
+      links: [
+        { type: 'pdf', label: 'PDF', url: '#', icon: FileText },
+        { type: 'article', label: 'Article', url: '#', icon: FileCheck },
+      ]
+    },
+    {
+      id: 7,
+      type: 'patent',
+      title: 'Automatic annotation of social media communications for noise cancellation',
+      year: '2019',
+      url: '#',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Saurabh Arora', url: null },
+        { name: 'Satyam Saxena', url: null },
+        { name: 'Navaneethan Santhanam', url: null }
+      ],
+      description: 'Patent for automatic annotation of social media communications.',
+      organization: 'Freshworks Inc',
+      links: [
+        { type: 'pdf', label: 'PDF', url: '#', icon: FileText },
+        { type: 'article', label: 'Article', url: '#', icon: FileCheck },
+      ]
+    },
+    {
+      id: 8,
+      type: 'paper',
+      title: 'A New Look at Composition of Authenticated Byzantine Generals',
+      year: '2013',
+      url: 'https://arxiv.org/abs/1203.1463',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Prasant Gopal', url: null },
+        { name: 'Piyush Bansal', url: null },
+        { name: 'Kannan Srinathan', url: null }
+      ],
+      description: 'New perspective on authentication in Byzantine agreement protocols.',
+      links: [
+        { type: 'pdf', label: 'PDF', url: 'https://arxiv.org/pdf/1203.1463.pdf', icon: FileText },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://arxiv2bibtex.org/?q=1203.1463', icon: Book },
+        { type: 'arxiv', label: 'arXiv: 1203.1463', url: 'https://arxiv.org/abs/1203.1463', icon: Archive },
+      ]
+    },
+    {
+      id: 9,
+      type: 'paper',
+      title: 'Byzantine Agreement Using Partial Authentication',
+      year: '2011',
+      url: '#',
+      venue: '25th International Symposium on DIStributed Computing (DISC) in Roma, Italy 2011',
+      authors: [
+        { name: 'Piyush Bansal', url: null },
+        { name: 'Prasant Gopal', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Kannan Srinathan', url: null },
+        { name: 'Pranav Kumar Vasishta', url: null }
+      ],
+      description: 'Explores Byzantine agreement with partial authentication.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/c9f4cx', url: 'https://doi.org/10/c9f4cx', icon: Link2 },
+        { type: 'conference', label: 'DISC 2011', url: '#', icon: Calendar },
+      ]
+    },
+    {
+      id: 10,
+      type: 'paper',
+      title: 'On Composability of Reliable Unicast and Broadcast',
+      year: '2010',
+      url: '#',
+      venue: 'International Conference on Distributed Computing and Networking (ICDCN) in Kolkata, India 2010',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Sandeep Hans', url: null },
+        { name: 'Kannan Srinathan', url: null },
+        { name: 'C. Pandu Rangan', url: null }
+      ],
+      description: 'Analysis of composability in reliable communication protocols.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/bx5j37', url: 'https://doi.org/10/bx5j37', icon: Link2 },
+        { type: 'conference', label: 'ICDCN 2010', url: '#', icon: Calendar },
+      ]
+    },
+    {
+      id: 11,
+      type: 'paper',
+      title: 'Authenticated Byzantine Generals in Dual Failure Model',
+      year: '2010',
+      url: '#',
+      venue: 'International Conference on Distributed Computing and Networking (ICDCN) in Kolkata, India 2010',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Prasant Gopal', url: null },
+        { name: 'Piyush Bansal', url: null },
+        { name: 'Kannan Srinathan', url: null }
+      ],
+      description: 'Byzantine agreement protocol for dual failure scenarios.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/bx2p4r', url: 'https://doi.org/10/bx2p4r', icon: Link2 },
+        { type: 'conference', label: 'ICDCN 2010', url: '#', icon: Calendar },
+      ]
+    },
+    {
+      id: 12,
+      type: 'thesis',
+      title: 'Authenticated Byzantine Generals',
+      year: '2009',
+      url: '#',
+      authors: [
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
+      ],
+      description: 'MS thesis on authentication in Byzantine agreement protocols.',
+      organization: 'IIIT Hyderabad',
+      links: [
+        { type: 'pdf', label: 'PDF', url: '#', icon: FileText },
+      ]
+    },
+    {
+      id: 13,
+      type: 'paper',
+      title: 'Topology Knowledge Affects Probabilistic Reliable Communication',
+      year: '2009',
+      url: '#',
+      venue: 'ACM Symposium on Principles of Distributed Computing (PODC) in Calgary, Alberta, Canada 2009',
+      authors: [
+        { name: 'Pranav K. Vasishta', url: null },
+        { name: 'Prasant Gopal', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Piyush Bansal', url: null },
+        { name: 'Kannan Srinathan', url: null }
+      ],
+      description: 'Effects of topology knowledge on reliable communication.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/c6nnfs', url: 'https://doi.org/10/c6nnfs', icon: Link2 },
+        { type: 'conference', label: 'PODC 2009', url: '#', icon: Calendar },
+      ]
+    },
+    {
+      id: 14,
+      type: 'paper',
+      title: 'Global Consistency can be Easier than Point-to-Point Communication',
+      year: '2009',
+      url: '#',
+      venue: 'ACM Symposium on Principles of Distributed Computing (PODC) in Calgary, Alberta, Canada 2009',
+      authors: [
+        { name: 'Prasant Gopal', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Pranav K. Vasishta', url: null },
+        { name: 'Piyush Bansal', url: null },
+        { name: 'Kannan Srinathan', url: null }
+      ],
+      description: 'Comparing global consistency and point-to-point communication.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/ffg8hv', url: 'https://doi.org/10/ffg8hv', icon: Link2 },
+        { type: 'conference', label: 'PODC 2009', url: '#', icon: Calendar },
+      ]
+    },
+    {
+      id: 15,
+      type: 'paper',
+      title: 'On Privacy Preserving Convex Hull',
+      year: '2009',
+      url: '#',
+      venue: 'IEEE International Conference on Availability, Reliability and Security (ARES) in Fukuoka, Japan 2009',
+      authors: [
+        { name: 'Sandeep Hans', url: null },
+        { name: 'Sarat C. Addepalli', url: null },
+        { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
+        { name: 'Kannan Srinathan', url: null }
+      ],
+      description: 'Privacy-preserving algorithms for convex hull computation.',
+      links: [
+        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
+        { type: 'doi', label: 'DOI: 10/dcp6rp', url: 'https://doi.org/10/dcp6rp', icon: Link2 },
+        { type: 'conference', label: 'ARES 2009', url: '#', icon: Calendar },
+      ]
+    }
+  ];
+
+  const getPublicationIcon = (type) => {
+    switch(type) {
+      case 'paper': return FileText;
+      case 'book': return Book;
+      case 'patent': return FileCheck;
+      case 'thesis': return Archive;
+      default: return FileText;
+    }
+  };
+
+  const filteredPublications = publications.filter(pub => {
+    const matchesSearch = pub.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          pub.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          pub.authors.some(author => author.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    const matchesFilter = activeFilter === 'all' || pub.type === activeFilter;
+    
+    return matchesSearch && matchesFilter;
+  });
+
+  const handleFilterClick = (filterType) => {
+    setActiveFilter(filterType);
+  };
+
+  const filterTypes = [
+    { id: 'all', label: 'All Publications' },
+    { id: 'paper', label: 'Research Papers' },
+    { id: 'book', label: 'Books' },
+    { id: 'patent', label: 'Patents' },
+    { id: 'thesis', label: 'Theses' }
+  ];
+
+  // Count publications by type
+  const pubCounts = {
+    papers: publications.filter(p => p.type === 'paper').length,
+    books: publications.filter(p => p.type === 'book').length,
+    patents: publications.filter(p => p.type === 'patent').length,
+    theses: publications.filter(p => p.type === 'thesis').length
+  };
+
+  return (
+    <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+      <div className="container mx-auto py-5 px-4 max-w-5xl">
+        <div className="text-center mb-6">
+          <h1 className="text-5xl font-bold text-blue-900 mb-2">Publications</h1>
+          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-blue-700 mx-auto mb-6 rounded-full"></div>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            Research papers, patents, books, and theses in Natural Language Processing, 
+            Distributed Computing, and Security.
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <div className="relative max-w-md mx-auto mb-6">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+            <input 
+              type="text" 
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out" 
+              placeholder="Search publications..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {filterTypes.map(filter => (
+              <button 
+                key={filter.id}
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-200 ${
+                  activeFilter === filter.id 
+                    ? 'bg-blue-700 text-white shadow-md scale-105' 
+                    : 'bg-white text-blue-800 border border-blue-200 hover:bg-blue-50'
+                }`}
+                onClick={() => handleFilterClick(filter.id)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-8">
+          {filteredPublications.length > 0 ? (
+            filteredPublications.map(publication => {
+              const Icon = getPublicationIcon(publication.type);
+              return (
+                <div 
+                  key={publication.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden border-l-4 border-l-blue-500 border-t border-r border-b border-gray-200 hover:shadow-lg transition-all transform hover:-translate-y-1 duration-300"
+                >
+                  <div className="p-6">
+                    <div className="flex items-start">
+                      <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-lg mr-4 hidden md:flex items-center justify-center border border-blue-300 h-16 w-16 flex-shrink-0">
+                        <Icon size={28} className="text-blue-700" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-start flex-wrap md:flex-nowrap gap-2 mb-2">
+                          <h2 className="text-xl font-semibold text-blue-900 hover:text-blue-700 transition-colors flex-grow">
+                            {publication.url !== '#' ? (
+                              <a href={publication.url} className="hover:underline">{publication.title}</a>
+                            ) : (
+                              publication.title
+                            )}
+                          </h2>
+                          <span className="text-sm text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-full px-3 py-1 font-medium shadow-sm flex-shrink-0">
+                            {publication.year}
+                          </span>
+                        </div>
+                        <p className="text-gray-700 mb-2">
+                          <span className="font-semibold">Authors:</span>{' '}
+                          {publication.authors.map((author, idx) => (
+                            <span key={idx}>
+                              {author.url ? (
+                                <a href={author.url} className="text-gray-600 hover:text-blue-700 hover:underline">
+                                  {author.name}
+                                </a>
+                              ) : (
+                                <span className="text-gray-600">{author.name}</span>
+                              )}
+                              {idx < publication.authors.length - 1 && <span className="text-gray-600">, </span>}
+                            </span>
+                          ))}
+                        </p>
+                        {publication.venue && (
+                          <p className="text-gray-600 mb-2">
+                            <span className="font-semibold">Venue:</span> {publication.venue}
+                          </p>
+                        )}
+                        {publication.organization && (
+                          <p className="text-gray-600 mb-2">
+                            <span className="font-semibold">Organization:</span> {publication.organization}
+                          </p>
+                        )}
+                        <p className="text-gray-600 mb-4">
+                          {publication.description}
+                        </p>
+                        <div className="flex flex-wrap items-center gap-4 text-sm">
+                          {publication.links && publication.links.map((link, idx) => (
+                            <a 
+                              key={idx}
+                              className="flex items-center text-blue-600 hover:text-blue-800 hover:underline" 
+                              href={link.url}
+                            >
+                              <link.icon size={16} className="mr-1" /> {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-lg text-gray-500">No publications found matching your search criteria.</p>
+            </div>
+          )}
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+            <div className="text-3xl font-bold text-blue-700 mb-1">{publications.length}</div>
+            <div className="text-sm text-gray-600">Publications</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+            <div className="text-3xl font-bold text-blue-700 mb-1">{pubCounts.papers}</div>
+            <div className="text-sm text-gray-600">Papers</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+            <div className="text-3xl font-bold text-blue-700 mb-1">{pubCounts.books}</div>
+            <div className="text-sm text-gray-600">Books</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+            <div className="text-3xl font-bold text-blue-700 mb-1">{pubCounts.patents}</div>
+            <div className="text-sm text-gray-600">Patents</div>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+            <div className="text-3xl font-bold text-blue-700 mb-1">{pubCounts.theses}</div>
+            <div className="text-sm text-gray-600">Theses</div>
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent mx-auto mb-4"></div>
+          <p className="text-gray-500 text-sm">Last updated: April 2025</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PublicationPage;
