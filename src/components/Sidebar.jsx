@@ -6,7 +6,7 @@ import Anujgupta from "../assets/images/Anuj_formal_high_res.png"
 
 function Sidebar() {
   return (
-    < aside className="w-1/5 bg-white p-8 rounded-lg shadow-lg py-2">
+    < aside className="w-1/5 bg-white p-8 rounded-lg shadow-lg py-2 max-h-[120vh]">
       <div className="author__avatar mb-4 flex flex-col items-center">
         <img
           src={Anujgupta}

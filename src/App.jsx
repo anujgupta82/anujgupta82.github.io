@@ -19,8 +19,8 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col bg-gray-50">
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 pt-24 pb-8">
-          <div className="flex flex-col md:flex-row gap-8">
+        <main className="flex-grow container mx-auto px-4 pt-24 pb-5">
+          <div className="flex flex-col md:flex-row gap-5">
             <Sidebar />
             <div className="flex-grow">
               <Routes> 
