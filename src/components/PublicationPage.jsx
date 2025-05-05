@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle, FileText, Book, Archive, Link2, Award, Calendar, Search, FileCheck } from 'lucide-react';
+import thesis_pdf_file from "../assets/docs/ABG_thesis.pdf"
 
 function PublicationPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -162,7 +163,7 @@ function PublicationPage() {
       type: 'paper',
       title: 'Byzantine Agreement Using Partial Authentication',
       year: '2011',
-      url: '#',
+      url: 'https://link.springer.com/chapter/10.1007/978-3-642-24100-0_38',
       venue: '25th International Symposium on DIStributed Computing (DISC) in Roma, Italy 2011',
       authors: [
         { name: 'Piyush Bansal', url: null },
@@ -173,9 +174,9 @@ function PublicationPage() {
       ],
       description: 'Explores Byzantine agreement with partial authentication.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/c9f4cx', url: 'https://doi.org/10/c9f4cx', icon: Link2 },
-        { type: 'conference', label: 'DISC 2011', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1007/978-3-642-24100-0_38', icon: Book },
+        { type: 'doi', label: 'DOI: 10/c9f4cx', url: 'https://doi.org/10.1007/978-3-642-24100-0_38', icon: Link2 },
+        { type: 'conference', label: 'DISC 2011', url: 'https://www.disc-conference.org/wp/past-conferences/', icon: Calendar },
       ]
     },
     {
@@ -183,7 +184,7 @@ function PublicationPage() {
       type: 'paper',
       title: 'On Composability of Reliable Unicast and Broadcast',
       year: '2010',
-      url: '#',
+      url: 'https://link.springer.com/chapter/10.1007/978-3-642-11322-2_10',
       venue: 'International Conference on Distributed Computing and Networking (ICDCN) in Kolkata, India 2010',
       authors: [
         { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
@@ -193,9 +194,9 @@ function PublicationPage() {
       ],
       description: 'Analysis of composability in reliable communication protocols.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/bx5j37', url: 'https://doi.org/10/bx5j37', icon: Link2 },
-        { type: 'conference', label: 'ICDCN 2010', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1007/978-3-642-11322-2_10', icon: Book },
+        { type: 'doi', label: 'DOI: 10/bx5j37', url: 'https://doi.org/10.1007/978-3-642-11322-2_10', icon: Link2 },
+        { type: 'conference', label: 'ICDCN 2010', url: 'https://www.cucse.org/ICDCN2010.htm', icon: Calendar },
       ]
     },
     {
@@ -203,7 +204,7 @@ function PublicationPage() {
       type: 'paper',
       title: 'Authenticated Byzantine Generals in Dual Failure Model',
       year: '2010',
-      url: '#',
+      url: 'https://link.springer.com/chapter/10.1007/978-3-642-11322-2_12',
       venue: 'International Conference on Distributed Computing and Networking (ICDCN) in Kolkata, India 2010',
       authors: [
         { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
@@ -213,9 +214,9 @@ function PublicationPage() {
       ],
       description: 'Byzantine agreement protocol for dual failure scenarios.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/bx2p4r', url: 'https://doi.org/10/bx2p4r', icon: Link2 },
-        { type: 'conference', label: 'ICDCN 2010', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1007/978-3-642-11322-2_12', icon: Book },
+        { type: 'doi', label: 'DOI: 10/bx2p4r', url: 'https://doi.org/10.1007/978-3-642-11322-2_12', icon: Link2 },
+        { type: 'conference', label: 'ICDCN 2010', url: 'https://www.cucse.org/ICDCN2010.htm', icon: Calendar },
       ]
     },
     {
@@ -223,14 +224,14 @@ function PublicationPage() {
       type: 'thesis',
       title: 'Authenticated Byzantine Generals',
       year: '2009',
-      url: '#',
+      url: thesis_pdf_file,
       authors: [
         { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' }
       ],
-      description: 'MS thesis on authentication in Byzantine agreement protocols.',
+      description: 'MS thesis - Authentication in Byzantine agreement protocols.',
       organization: 'IIIT Hyderabad',
       links: [
-        { type: 'pdf', label: 'PDF', url: '#', icon: FileText },
+        { type: 'pdf', label: 'PDF', url: thesis_pdf_file, icon: FileText },
       ]
     },
     {
@@ -238,7 +239,7 @@ function PublicationPage() {
       type: 'paper',
       title: 'Topology Knowledge Affects Probabilistic Reliable Communication',
       year: '2009',
-      url: '#',
+      url: 'https://dl.acm.org/doi/10.1145/1582716.1582784',
       venue: 'ACM Symposium on Principles of Distributed Computing (PODC) in Calgary, Alberta, Canada 2009',
       authors: [
         { name: 'Pranav K. Vasishta', url: null },
@@ -249,9 +250,9 @@ function PublicationPage() {
       ],
       description: 'Effects of topology knowledge on reliable communication.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/c6nnfs', url: 'https://doi.org/10/c6nnfs', icon: Link2 },
-        { type: 'conference', label: 'PODC 2009', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1145/1582716.1582784', icon: Book },
+        { type: 'doi', label: 'DOI: 10.1145/1582716.1582784', url: 'https://doi.org/10.1145/1582716.1582784', icon: Link2 },
+        { type: 'conference', label: 'PODC 2009', url: 'https://www.podc.org/podc2009/', icon: Calendar },
       ]
     },
     {
@@ -259,10 +260,10 @@ function PublicationPage() {
       type: 'paper',
       title: 'Global Consistency can be Easier than Point-to-Point Communication',
       year: '2009',
-      url: '#',
+      url: 'https://dl.acm.org/doi/10.1145/1582716.1582782',
       venue: 'ACM Symposium on Principles of Distributed Computing (PODC) in Calgary, Alberta, Canada 2009',
       authors: [
-        { name: 'Prasant Gopal', url: null },
+        { name: 'Prasant Gopal', url: 'https://prasantgopal.com/' },
         { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
         { name: 'Pranav K. Vasishta', url: null },
         { name: 'Piyush Bansal', url: null },
@@ -270,9 +271,9 @@ function PublicationPage() {
       ],
       description: 'Comparing global consistency and point-to-point communication.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/ffg8hv', url: 'https://doi.org/10/ffg8hv', icon: Link2 },
-        { type: 'conference', label: 'PODC 2009', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1145/1582716.1582782', icon: Book },
+        { type: 'doi', label: 'DOI: 10.1145/1582716.1582782', url: 'https://doi.org/10.1145/1582716.1582782', icon: Link2 },
+        { type: 'conference', label: 'PODC 2009', url: 'https://www.podc.org/podc2009/', icon: Calendar },
       ]
     },
     {
@@ -280,19 +281,19 @@ function PublicationPage() {
       type: 'paper',
       title: 'On Privacy Preserving Convex Hull',
       year: '2009',
-      url: '#',
+      url: 'https://ieeexplore.ieee.org/document/5066472',
       venue: 'IEEE International Conference on Availability, Reliability and Security (ARES) in Fukuoka, Japan 2009',
       authors: [
-        { name: 'Sandeep Hans', url: null },
+        { name: 'Sandeep Hans', url: 'https://research.ibm.com/people/sandeep-hans' },
         { name: 'Sarat C. Addepalli', url: null },
         { name: 'Anuj Gupta', url: 'https://anujgupta82.github.io/' },
-        { name: 'Kannan Srinathan', url: null }
+        { name: 'Kannan Srinathan', url: 'https://www.iiit.ac.in/faculty/kannan-srinathan/' }
       ],
       description: 'Privacy-preserving algorithms for convex hull computation.',
       links: [
-        { type: 'bibtex', label: 'BibTeX', url: '#', icon: Book },
-        { type: 'doi', label: 'DOI: 10/dcp6rp', url: 'https://doi.org/10/dcp6rp', icon: Link2 },
-        { type: 'conference', label: 'ARES 2009', url: '#', icon: Calendar },
+        { type: 'bibtex', label: 'BibTeX', url: 'https://www.doi2bib.org/bib/10.1109/ARES.2009.159', icon: Book },
+        { type: 'doi', label: 'DOI: 10.1109/ARES.2009.159', url: 'https://doi.org/10.1109/ARES.2009.159', icon: Link2 },
+        { type: 'conference', label: 'ARES 2009', url: 'https://2009.ares-conference.eu/www.ares-conference.eu/conf/index.html', icon: Calendar },
       ]
     }
   ];
