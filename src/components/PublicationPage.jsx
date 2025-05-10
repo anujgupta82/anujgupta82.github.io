@@ -9,6 +9,7 @@ import {
   Calendar,
   Search,
   FileCheck,
+  
 } from "lucide-react";
 import thesis_pdf_file from "../assets/docs/ABG_thesis.pdf";
 
@@ -490,6 +491,8 @@ function PublicationPage() {
         return FileCheck;
       case "thesis":
         return Archive;
+      case "article":
+        return FileText;
       default:
         return FileText;
     }
@@ -518,6 +521,7 @@ function PublicationPage() {
     { id: "book", label: "Books" },
     { id: "patent", label: "Patents" },
     { id: "thesis", label: "Thesis" },
+    { id: "article", label: "Articles" },
   ];
 
   // Count publications by type
@@ -526,6 +530,7 @@ function PublicationPage() {
     books: publications.filter((p) => p.type === "book").length,
     patents: publications.filter((p) => p.type === "patent").length,
     thesis: publications.filter((p) => p.type === "thesis").length,
+    Articles: publications.filter((p) => p.type === "article").length,
   };
 
   return (
@@ -555,6 +560,25 @@ function PublicationPage() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
+
+          
+
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {filterTypes.map((filter) => (
+              <button
+                key={filter.id}
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-200 ${
+                  activeFilter === filter.id
+                    ? "bg-blue-700 text-white shadow-md scale-105"
+                    : "bg-white text-blue-800 border border-blue-200 hover:bg-blue-50"
+                }`}
+                onClick={() => handleFilterClick(filter.id)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+
 
           <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
@@ -587,23 +611,14 @@ function PublicationPage() {
               </div>
               <div className="text-sm text-gray-600">Thesis</div>
             </div>
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-3xl font-bold text-blue-700 mb-1">
+                {pubCounts.Article}
+              </div>
+              <div className="text-sm text-gray-600">Articles</div>
+            </div>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {filterTypes.map((filter) => (
-              <button
-                key={filter.id}
-                className={`px-5 py-2 rounded-full font-medium transition-all duration-200 ${
-                  activeFilter === filter.id
-                    ? "bg-blue-700 text-white shadow-md scale-105"
-                    : "bg-white text-blue-800 border border-blue-200 hover:bg-blue-50"
-                }`}
-                onClick={() => handleFilterClick(filter.id)}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="space-y-8">
