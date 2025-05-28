@@ -20,6 +20,258 @@ function PublicationPage() {
   // Publications in reverse chronological order (most recent first)
   const publications = [
     {
+      id: 100,
+      type: "article",
+      title: "What Sam Altman's Role in OpenAI's Rise Teaches Us",
+      year: "2025",
+      month: "May",
+      url: "https://pragmaticai1.substack.com/p/what-sam-altmans-role-in-openais",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "The New Blueprint for Building Leadership at Deep Tech Labs",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/what-sam-altmans-role-in-openais",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 101,
+      type: "article",
+      title: "A special session to learn \"How We Conceived the AI system that Won Over Sam Altman (OpenAI) & Vinod Khosla (Khosla Ventures)\"",
+      year: "2025",
+      month: "May",
+      url: "https://pragmaticai1.substack.com/p/a-special-session-to-learn-how-we",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Special session on AI system development",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/a-special-session-to-learn-how-we",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 102,
+      type: "article",
+      title: "10x Game in Business",
+      year: "2025",
+      month: "May",
+      url: "https://pragmaticai1.substack.com/p/10x-game-in-business",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "15 Years In Startups: Key Learnings",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/10x-game-in-business",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 103,
+      type: "article",
+      title: "AI Adoption & Human Expertise",
+      year: "2025",
+      month: "May",
+      url: "https://pragmaticai1.substack.com/p/ai-adoption-and-human-expertise",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Exploring the intersection of AI and human expertise",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/ai-adoption-and-human-expertise",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 104,
+      type: "article",
+      title: "Founder/CEO's Playbook: How to Ride the AI Wave",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/founderceos-guide-to-making-the-most",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Guide for leaders on AI transformation",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/founderceos-guide-to-making-the-most",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 105,
+      type: "article",
+      title: "The Art (& Science) of finding the most important AI Use Cases - Part 3",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/the-art-and-science-of-finding-the-257",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Part 3 of the series on AI use cases",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/the-art-and-science-of-finding-the-257",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 106,
+      type: "article",
+      title: "The Art (& Science) of finding the most important AI Use Cases - Part 2",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/the-art-and-science-of-finding-the",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Part 2 of the series on AI use cases",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/the-art-and-science-of-finding-the",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 107,
+      type: "article",
+      title: "The Art (& Science) of finding the most important AI Use Cases - Part 1",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/why-your-ai-roadmap-looks-like-everyone",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Part 1 of the series on AI use cases",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/why-your-ai-roadmap-looks-like-everyone",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 108,
+      type: "article",
+      title: "Why the AI rush?",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/why-the-ai-rush",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Understanding the current AI revolution",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/why-the-ai-rush",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 109,
+      type: "article",
+      title: "Why Founders/CEOs must personally own AI transformation",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/why-foundersceos-must-personally",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "The importance of leadership in AI transformation",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/why-foundersceos-must-personally",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 110,
+      type: "article",
+      title: "AI Déjà Vu: Learning from the Internet Era",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/ai-deja-vu-learning-from-the-internet",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Drawing parallels between AI and Internet revolutions",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/ai-deja-vu-learning-from-the-internet",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 111,
+      type: "article",
+      title: "Unknowingly, CXO's are often the biggest bottleneck in AI adoption",
+      year: "2025",
+      month: "Apr",
+      url: "https://pragmaticai1.substack.com/p/unknowingly-cxos-are-the-biggest",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Addressing leadership challenges in AI adoption",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/unknowingly-cxos-are-the-biggest",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 112,
+      type: "article",
+      title: "AI ≠ IT",
+      year: "2025",
+      month: "Mar",
+      url: "https://pragmaticai1.substack.com/p/ai-vs-it",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Understanding the fundamental differences between AI and IT",
+      links: [
+        {
+          type: "article",
+          label: "Read Article",
+          url: "https://pragmaticai1.substack.com/p/ai-vs-it",
+          icon: FileText,
+        },
+      ],
+    },
+    {
+      id: 113,
+      type: "article",
+      title: "Podcast #1 | Somnath Biswas - Head of Product | Conversational AI",
+      year: "2025",
+      month: "Feb",
+      url: "https://pragmaticai1.substack.com/p/podcast-1-somnath-biswas-head-of",
+      authors: [{ name: "Anuj Gupta", url: "https://anujgupta82.github.io/" }],
+      description: "Conversation about Conversational AI with Somnath Biswas",
+      links: [
+        {
+          type: "article",
+          label: "Listen to Podcast",
+          url: "https://pragmaticai1.substack.com/p/podcast-1-somnath-biswas-head-of",
+          icon: FileText,
+        },
+      ],
+    },
+    {
       id: 1,
       type: "paper",
       title:
@@ -98,11 +350,11 @@ function PublicationPage() {
       description:
         "Presents a corpus for text normalization of Hindi-English code-mixed text.",
       links: [
-        { type: "bibtex", label: "BibTeX", url: "#", icon: Book },
+        { type: "bibtex", label: "BibTeX", url: "https://www.doi2bib.org/bib/10.18653/v1/2020.coling-main.1", icon: Book },
         {
           type: "doi",
-          label: "DOI: 10/g2h5",
-          url: "https://doi.org/10/g2h5",
+          label: "DOI: 10.18653/v1/2020.coling-main.1",
+          url: "https://doi.org/10.18653/v1/2020.coling-main.1",
           icon: Link2,
         },
         {
@@ -127,11 +379,11 @@ function PublicationPage() {
       ],
       description: "Examines how noisy text affects BERT performance.",
       links: [
-        { type: "bibtex", label: "BibTeX", url: "#", icon: Book },
+        { type: "bibtex", label: "BibTeX", url: "https://www.doi2bib.org/bib/10.18653/v1/2020.wnut-1.1", icon: Book },
         {
           type: "doi",
-          label: "DOI: 10/gjzgqh",
-          url: "https://doi.org/10/gjzgqh",
+          label: "DOI: 10.18653/v1/2020.wnut-1.1",
+          url: "https://doi.org/10.18653/v1/2020.wnut-1.1",
           icon: Link2,
         },
         {
@@ -262,7 +514,7 @@ function PublicationPage() {
         },
         {
           type: "doi",
-          label: "DOI: 10/c9f4cx",
+          label: "DOI: 10.1007/978-3-642-24100-0_38",
           url: "https://doi.org/10.1007/978-3-642-24100-0_38",
           icon: Link2,
         },
@@ -299,7 +551,7 @@ function PublicationPage() {
         },
         {
           type: "doi",
-          label: "DOI: 10/bx5j37",
+          label: "DOI: 10.1007/978-3-642-11322-2_10",
           url: "https://doi.org/10.1007/978-3-642-11322-2_10",
           icon: Link2,
         },
@@ -335,7 +587,7 @@ function PublicationPage() {
         },
         {
           type: "doi",
-          label: "DOI: 10/bx2p4r",
+          label: "DOI: 10.1007/978-3-642-11322-2_12",
           url: "https://doi.org/10.1007/978-3-642-11322-2_12",
           icon: Link2,
         },
@@ -580,42 +832,42 @@ function PublicationPage() {
           </div>
 
 
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
+          <div className="mt-10 grid grid-cols-6 gap-2 mb-10">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
                 {publications.length}
               </div>
-              <div className="text-sm text-gray-600">Publications</div>
+              <div className="text-xs text-gray-600">Publications</div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
                 {pubCounts.papers}
               </div>
-              <div className="text-sm text-gray-600">Papers</div>
+              <div className="text-xs text-gray-600">Papers</div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
                 {pubCounts.books}
               </div>
-              <div className="text-sm text-gray-600">Books</div>
+              <div className="text-xs text-gray-600">Books</div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
                 {pubCounts.patents}
               </div>
-              <div className="text-sm text-gray-600">Patents</div>
+              <div className="text-xs text-gray-600">Patents</div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
                 {pubCounts.thesis}
               </div>
-              <div className="text-sm text-gray-600">Thesis</div>
+              <div className="text-xs text-gray-600">Thesis</div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
-              <div className="text-3xl font-bold text-blue-700 mb-1">
-                {pubCounts.Article}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center border border-blue-200 shadow-sm hover:shadow transition-all duration-300">
+              <div className="text-2xl font-bold text-blue-700 mb-1">
+                {pubCounts.Articles}
               </div>
-              <div className="text-sm text-gray-600">Articles</div>
+              <div className="text-xs text-gray-600">Articles</div>
             </div>
           </div>
 
@@ -642,6 +894,8 @@ function PublicationPage() {
                               <a
                                 href={publication.url}
                                 className="hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 {publication.title}
                               </a>
@@ -653,28 +907,32 @@ function PublicationPage() {
                             {publication.year}
                           </span>
                         </div>
-                        <p className="text-gray-700 mb-2">
-                          <span className="font-semibold">Authors:</span>{" "}
-                          {publication.authors.map((author, idx) => (
-                            <span key={idx}>
-                              {author.url ? (
-                                <a
-                                  href={author.url}
-                                  className="text-gray-600 hover:text-blue-700 hover:underline"
-                                >
-                                  {author.name}
-                                </a>
-                              ) : (
-                                <span className="text-gray-600">
-                                  {author.name}
-                                </span>
-                              )}
-                              {idx < publication.authors.length - 1 && (
-                                <span className="text-gray-600">, </span>
-                              )}
-                            </span>
-                          ))}
-                        </p>
+                        {publication.type !== "article" && (
+                          <p className="text-gray-700 mb-2">
+                            <span className="font-semibold">Authors:</span>{" "}
+                            {publication.authors.map((author, idx) => (
+                              <span key={idx}>
+                                {author.url ? (
+                                  <a
+                                    href={author.url}
+                                    className="text-gray-600 hover:text-blue-700 hover:underline"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {author.name}
+                                  </a>
+                                ) : (
+                                  <span className="text-gray-600">
+                                    {author.name}
+                                  </span>
+                                )}
+                                {idx < publication.authors.length - 1 && (
+                                  <span className="text-gray-600">, </span>
+                                )}
+                              </span>
+                            ))}
+                          </p>
+                        )}
                         {publication.venue && (
                           <p className="text-gray-600 mb-2">
                             <span className="font-semibold">Venue:</span>{" "}
@@ -697,6 +955,8 @@ function PublicationPage() {
                                 key={idx}
                                 className="flex items-center text-blue-600 hover:text-blue-800 hover:underline"
                                 href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 <link.icon size={16} className="mr-1" />{" "}
                                 {link.label}
