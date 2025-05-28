@@ -6,7 +6,7 @@ import Anujgupta from "../assets/images/Anuj_formal_high_res.png"
 
 function Sidebar() {
   return (
-    <aside className="w-1/5 bg-white p-8 rounded-lg shadow-lg py-2 h-fit">
+    <aside className="w-1/5 bg-white p-8 rounded-lg shadow-lg py-2 h-fit pb-16">
       <div className="author__avatar mb-4 flex flex-col items-center">
         <img
           src={Anujgupta}
@@ -51,7 +51,7 @@ function Sidebar() {
         </div>
       </div>
 
-      <div className="author__urls-wrapper mt-8">
+      <div className="author__urls-wrapper mt-16">
         <button className="w-full bg-blue-800 hover:bg-blue-900 text-white py-2.5 px-4 rounded-md transition-all duration-300 mb-6 font-medium shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
           Follow
         </button>
