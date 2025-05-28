@@ -10,7 +10,7 @@ function WorkshopPage() {
             <div className="archive px-4 md:px-0"> {/* Container for workshops */}
                 <div className="list__item mb-8"> {/* Spacing between workshop items */}
                     <article className="archive__item bg-white rounded-lg shadow-md p-6"> {/* Card styling for workshop item */}
-                        <h2 className="archive__item-title text-xl font-semibold text-blue-800 mb-3" itemprop="headline"> {/* Workshop title styling */}
+                        <h2 className="archive__item-title text-xl font-semibold text-blue-800 mb-3" itemProp="headline"> {/* Workshop title styling */}
                             <a>Bootcamp for Natural Language Processing</a>
                         </h2>
                         <div className="workshop-info flex flex-col md:flex-row justify-between items-start"> {/* Flex layout for workshop info */}

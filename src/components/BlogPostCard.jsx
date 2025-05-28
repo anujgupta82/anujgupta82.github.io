@@ -12,8 +12,8 @@ function BlogPostCard({ title, date, excerpt }) { // Receive blog post data as p
             className={`blog-post-card bg-white rounded-lg border border-gray-200 shadow-md p-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer mb-6 ${isExpanded ? 'expanded' : ''}`} // Conditional class for expanded state
             onClick={toggleCard} // Toggle expansion on click
         >
-            <article className="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-                <h2 className="archive__item-title text-xl font-semibold text-gray-800 mb-2" itemprop="headline">
+            <article className="archive__item" itemScope itemType="http://schema.org/CreativeWork">
+                <h2 className="archive__item-title text-xl font-semibold text-gray-800 mb-2" itemProp="headline">
                     <a href="#" rel="" className="no-underline hover:underline">{title}</a> {/* Title from props */}
                 </h2>
                 <p className="page__date text-gray-500 text-sm mb-2">
@@ -23,7 +23,7 @@ function BlogPostCard({ title, date, excerpt }) { // Receive blog post data as p
                     </strong>
                     <time dateTime="2199-01-01T00:00:00-08:00">{date}</time> {/* Date from props */}
                 </p>
-                <div className={`archive__item-excerpt text-gray-700 leading-relaxed overflow-hidden transition-max-h-500 duration-500 ${isExpanded ? 'max-h-500' : 'max-h-24'}`} itemprop="description"> {/* Conditional max-h for collapsing/expanding */}
+                <div className={`archive__item-excerpt text-gray-700 leading-relaxed overflow-hidden transition-max-h-500 duration-500 ${isExpanded ? 'max-h-500' : 'max-h-24'}`} itemProp="description"> {/* Conditional max-h for collapsing/expanding */}
                     {excerpt} {/* Excerpt from props */}
                 </div>
             </article>
