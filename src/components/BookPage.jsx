@@ -12,12 +12,14 @@ import { useEffect, useState } from "react";
 import PNLPbook from "../assets/images/PNLPbook.jpg";
 import pnlpchinese from "../assets/images/pnlpchinese.jpg";
 import pnlppolish from "../assets/images/pnlppolish.jpg";
-
+import pnlpjapanese from "../assets/images/pnlpjapanese.jpg";
 // Placeholder book covers with consistent aspect ratios
 const bookCovers = [
   { id: 1, src: PNLPbook, alt: "PNLP Book Cover" },
-  { id: 2, src: pnlpchinese, alt: "Chinese Complex Translation" },
-  { id: 3, src: pnlppolish, alt: "Japanese simplified translation" },
+  { id: 2, src: pnlpjapanese, alt: "Japanese simplified translation" },
+  { id: 3, src: pnlpchinese, alt: "Chinese Complex Translation" },
+  { id: 4, src: pnlppolish, alt: "Polish simplified translation" },
+  
 ];
 
 function BookPage() {
