@@ -24,7 +24,7 @@ const bookCovers = [
 
 function BookPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  //   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+    // const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   useEffect(() => {
     let interval;
@@ -56,7 +56,7 @@ function BookPage() {
   const NameLink = ({ href, children }) => (
     <a
       href={href}
-      className="font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200 hover:underline decoration-2"
+      className="font-semibold text-blue-600 transition-colors duration-200 hover:text-blue-800 hover:underline decoration-2"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -73,7 +73,7 @@ function BookPage() {
     },
     {
       name: "Microsoft",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/768px-Microsoft_logo.svg.png?20210729021049",
       url: "https://www.microsoft.com/",
       brandColor: "#00A4EF",
     },
@@ -91,13 +91,13 @@ function BookPage() {
     },
     {
       name: "Walmart",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Walmart_logo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/1024px-Walmart_logo.svg.png",
       url: "https://www.walmart.com/",
       brandColor: "#0071CE",
     },
     {
       name: "Arm",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/6/60/ARM_logo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/ARM_Logo.svg/920px-ARM_Logo.svg.png?20110319160354",
       url: "https://www.arm.com/",
       brandColor: "#0091BD",
     },
@@ -127,50 +127,84 @@ function BookPage() {
     },
     {
       name: "Oracle",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg",
+      logo: "https://cdn.worldvectorlogo.com/logos/oracle-logo-1.svg",
       url: "https://www.oracle.com/",
       brandColor: "#F80000",
     },
     {
       name: "American Express",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png",
       url: "https://www.americanexpress.com/",
       brandColor: "#006FCF",
     },
     {
       name: "Jio",
       logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Reliance_Jio_Logo.svg/768px-Reliance_Jio_Logo.svg.png",
-      url: "https://www.jio.com/",
       brandColor: "#003F7F",
     },
     {
       name: "Google AI",
-      logo: "https://upload.wikimedia.org/wikipedia/en/b/bb/Google_AI_logo.svg",
+      logo: "https://wp.logos-download.com/wp-content/uploads/2024/09/Google_AI_Logo.png?dl",
       url: "https://ai.google/",
       brandColor: "#4285F4",
     },
+    {
+      name: "Microsoft Research",
+      logo: "https://www.auai.org/uai2012/MS.png",
+      url: "https://www.microsoft.com/en-us/research/about-microsoft-research/",
+      brandColor: "#1a0dab"
+    },
+    {
+      name: "TRUST YOU",
+      logo: "https://www.hospitalitytechhub.com/wp-content/uploads/2021/04/TrustYou.png",
+      url: "https://www.hospitalitytechhub.com/partners/trustyou/",
+      brandColor: "1a0dab"
+    },
+    {
+      name: "MetaMetrics",
+      logo: "https://metametricsinc.com/wp-content/uploads/2019/01/MetaMetrics_Logo_Horizontal-1-768x227.png",
+      url: "https://metametricsinc.com/",
+      brandColor: "#1a0dab"
+    },
+    {
+      name: "Wingify",
+      logo: "https://wingify.com/wp-content/themes/wingify/images/media-kit/color/wingify-logo-color.svg",
+      url: "https://wingify.com/",
+      brandColor: "#1a0dab"
+    },
+    {
+      name: "Meta AI",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
+      brandColor: "#1a0dab"
+    },
+    {
+      name: "Paloalto",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/PaloAltoNetworks_2020_Logo.svg/768px-PaloAltoNetworks_2020_Logo.svg.png?20210503173224",
+      url: "https://www.paloaltonetworks.com/company/brand",
+      brandColor: "#1a0dab"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br to-blue-50 from-slate-50">
+      <div className="max-w-5xl px-4 py-8 mx-auto sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+        <div className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 lg:text-5xl">
             Practical Natural Language Processing
           </h1>
-          <p className="text-xl text-gray-600 font-light italic max-w-3xl mx-auto">
+          <p className="max-w-3xl mx-auto text-xl italic font-light text-gray-600">
             A Comprehensive Guide to Building Real-World NLP Systems
           </p>
         </div>
 
         {/* Main Content Card */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="overflow-hidden bg-white shadow-xl rounded-2xl">
           <div className="lg:flex">
             {/* Book Carousel Section */}
-            <div className="lg:w-2/5 xl:w-1/3 p-8 bg-gradient-to-br from-gray-50 to-gray-100">
+            <div className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 lg:w-2/5 xl:w-1/3">
               <div className="relative aspect-[3/4] max-w-sm mx-auto">
-                <div className="absolute inset-0 bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden bg-white rounded-lg shadow-lg">
                   {bookCovers.map((book, index) => (
                     <div
                       key={book.id}
@@ -183,7 +217,7 @@ function BookPage() {
                       <img
                         src={book.src}
                         alt={book.alt}
-                        className="w-full h-full object-cover"
+                        className="object-cover w-full h-full"
                       />
                     </div>
                   ))}
@@ -191,14 +225,14 @@ function BookPage() {
                   {/* Navigation Buttons */}
                   <button
                     onClick={prevSlide}
-                    className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-gray-700 p-2 rounded-full shadow-md border border-blue-100 z-20 hover:bg-blue-100 transition-all duration-200 hover:scale-110"
+                    className="absolute z-20 p-2 text-gray-700 transition-all duration-200 transform -translate-y-1/2 border border-blue-100 rounded-full shadow-md left-3 top-1/2 backdrop-blur-sm bg-white/90 hover:bg-blue-100 hover:scale-110"
                     aria-label="Previous slide"
                   >
                     <FontAwesomeIcon icon={faChevronLeft} className="text-sm" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm text-gray-700 p-2 rounded-full shadow-md border border-blue-100 z-20 hover:bg-blue-100 transition-all duration-200 hover:scale-110"
+                    className="absolute z-20 p-2 text-gray-700 transition-all duration-200 transform -translate-y-1/2 border border-blue-100 rounded-full shadow-md right-3 top-1/2 backdrop-blur-sm bg-white/90 hover:bg-blue-100 hover:scale-110"
                     aria-label="Next slide"
                   >
                     <FontAwesomeIcon
@@ -208,7 +242,7 @@ function BookPage() {
                   </button>
 
                   {/* Slide Indicators */}
-                  <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+                  <div className="absolute left-0 right-0 z-20 flex justify-center space-x-2 bottom-4">
                     {bookCovers.map((_, index) => (
                       <button
                         key={index}
@@ -227,11 +261,11 @@ function BookPage() {
             </div>
 
             {/* Content Section */}
-            <div className="lg:w-3/5 xl:w-2/3 p-8 lg:p-12">
+            <div className="p-8 lg:w-3/5 xl:w-2/3 lg:p-12">
               <div className="space-y-6">
                 {/* Book Description */}
                 <div>
-                  <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                  <p className="mb-4 text-lg leading-relaxed text-gray-700">
                     The book gives a unique perspective on how to do AI when you
                     are part of startups and product teams as opposed to
                     academia or research labs. It has been translated into
@@ -287,7 +321,7 @@ function BookPage() {
                       Julian McAuley
                     </NameLink>
                   </p>
-                  <p className="text-gray-600 font-medium">
+                  <p className="font-medium text-gray-600">
                     Published by O'Reilly Media, US in June, 2020
                   </p>
                 </div>
@@ -302,7 +336,7 @@ function BookPage() {
                   >
                     <FontAwesomeIcon
                       icon={faBook}
-                      className="mr-2 group-hover:rotate-12 transition-transform duration-200"
+                      className="mr-2 transition-transform duration-200 group-hover:rotate-12"
                     />
                     O'Reilly
                   </a>
@@ -314,7 +348,7 @@ function BookPage() {
                   >
                     <FontAwesomeIcon
                       icon={faAnchor}
-                      className="mr-2 group-hover:rotate-12 transition-transform duration-200"
+                      className="mr-2 transition-transform duration-200 group-hover:rotate-12"
                     />
                     Amazon
                   </a>
@@ -327,7 +361,7 @@ function BookPage() {
                   >
                     <FontAwesomeIcon
                       icon={faLinkedin}
-                      className="mr-2 group-hover:scale-110 transition-transform duration-200"
+                      className="mr-2 transition-transform duration-200 group-hover:scale-110"
                     />
                     LinkedIn
                   </a>
@@ -337,38 +371,48 @@ function BookPage() {
           </div>
 
           {/* Companies Section */}
-          <div className="border-t border-gray-100 bg-gradient-to-br from-gray-50 to-slate-100 p-8 lg:p-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+          <div className="p-8 border-t border-gray-100 bg-gradient-to-br from-gray-50 to-slate-100 lg:p-12">
+            <h3 className="mb-8 text-2xl font-bold text-center text-gray-900">
               Trusted by Professionals at Leading Companies
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
               {companies.map((company, index) => (
                 <div key={index} className="relative group">
                   <a
                     href={company.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block relative overflow-hidden"
+                    className="relative block overflow-hidden"
                   >
-                    <div className="flex items-center justify-center h-16 px-4 py-3 rounded-xl  transition-all duration-300   group-hover:-translate-y-1 bg-transparent">
-                      <img
-                        src={company.logo}
-                        title={company.name}
-                        alt={`${company.name} logo`}
-                        className="h-8 max-w-full object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
+                    <div className="flex items-center justify-center h-24 px-4 py-3 transition-all duration-300 bg-transparent rounded-xl group-hover:-translate-y-1">
+                      <div 
+                        className="flex items-center justify-center" 
                         style={{
-                          filter: "grayscale(100%) brightness(0.4)",
-                          transition: "all 0.3s ease",
-                          backgroundColor: "transparent",
+                          width: "140px",
+                          height: "50px",
+                          position: "relative"
                         }}
-                        onMouseEnter={(e) => {
-                          e.target.style.filter = "grayscale(0%) brightness(1)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.filter =
-                            "grayscale(100%) brightness(0.4)";
-                        }}
-                      />
+                      >
+                        <img
+                          src={company.logo}
+                          title={company.name}
+                          alt={`${company.name} logo`}
+                          style={{
+                            transition: "all 0.3s ease",
+                            backgroundColor: "transparent",
+                            maxWidth: "100%",
+                            maxHeight: "100%",
+                            width: "auto",
+                            height: "auto",
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            objectFit: "contain"
+                          }}
+                          className="transition-all duration-300 group-hover:scale-105"
+                        />
+                      </div>
                     </div>
                   </a>
                 </div>
@@ -376,8 +420,8 @@ function BookPage() {
             </div>
 
             {/* Additional Professional Touch */}
-            <div className="text-center mt-8">
-              <p className="text-gray-600 text-sm font-medium">
+            <div className="mt-8 text-center">
+              <p className="text-sm font-medium text-gray-600">
                 Join thousands of professionals who trust our expertise
               </p>
             </div>
@@ -386,18 +430,18 @@ function BookPage() {
           {/* Upcoming Book Section */}
           {/* Upcoming Book Section */}
           <div className="border-t-2">
-            <div className="w-full rounded-lg bg-gradient-to-br from-gray-100 to-indigo-100 border-l-4 border-indigo-600 shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+            <div className="w-full p-6 border-l-4 border-indigo-600 rounded-lg shadow-sm bg-gradient-to-br from-gray-100 to-indigo-100">
+              <h3 className="mb-3 text-xl font-semibold text-gray-900">
                 📘 Coming Soon
               </h3>
-              <p className="text-gray-800 text-base mb-2">
+              <p className="mb-2 text-base text-gray-800">
                 I’m currently writing my second book titled{" "}
                 <strong className="text-indigo-700">
                   "AI First by Design"
                 </strong>
                 .
               </p>
-              <p className="text-gray-700 text-sm mb-4">
+              <p className="mb-4 text-sm text-gray-700">
                 A practical guide to accelerating AI maturity and leading
                 high-performance AI-driven initiatives and organizations.
               </p>
@@ -409,11 +453,11 @@ function BookPage() {
               >
                 <FontAwesomeIcon
                   icon={faGithub}
-                  className="mr-2 group-hover:rotate-12 transition-transform duration-200"
+                  className="mr-2 transition-transform duration-200 group-hover:rotate-12"
                 />
                 View on GitHub
               </a>
-              <p className="text-gray-500 text-xs mt-2 italic">
+              <p className="mt-2 text-xs italic text-gray-500">
                 This book is open-source and freely available to everyone.
               </p>
             </div>
