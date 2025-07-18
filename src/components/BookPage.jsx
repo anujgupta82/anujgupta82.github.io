@@ -13,6 +13,8 @@ import PNLPbook from "../assets/images/PNLPbook.jpg";
 import pnlpchinese from "../assets/images/pnlpchinese.jpg";
 import pnlppolish from "../assets/images/pnlppolish.jpg";
 import pnlpjapanese from "../assets/images/pnlpjapanese.jpg";
+import { FaXTwitter } from 'react-icons/fa6';
+import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake } from 'react-icons/fa';
 // Placeholder book covers with consistent aspect ratios
 const bookCovers = [
   { id: 1, src: PNLPbook, alt: "PNLP Book Cover" },
@@ -258,6 +260,43 @@ function BookPage() {
                   </div>
                 </div>
               </div>
+              {/* Social Handles Below Carousel */}
+              <div className="flex flex-col items-center mt-6 space-y-2">
+                <div className="flex flex-wrap justify-center gap-3">
+                <a href="https://www.linkedin.com/company/practical-nlp/"
+               className="text-[#0077B5] hover:text-[#005582] transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="LinkedIn"
+            >
+                <FaLinkedin className="w-6 h-6" />
+            </a>
+                  <a href="https://x.com/practicalnlproc"
+               className="text-black hover:text-gray-800 transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="X (Twitter)"
+            >
+                <FaXTwitter className="w-6 h-6" />
+            </a>
+            <a href="https://www.practicalnlp.ai/"
+               className="text-[#6e45e2] hover:text-[#4d2bb8] transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Gradient Advisors"
+            >
+                <FaGlobe className="w-6 h-6" />
+            </a>
+                  <a href="https://github.com/practical-nlp"
+               className="text-[#333] hover:text-black transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="GitHub"
+            >
+                <FaGithub className="w-6 h-6" />
+            </a>
+                </div>
+              </div>
             </div>
 
             {/* Content Section */}
@@ -284,35 +323,28 @@ function BookPage() {
                     </span>{" "}
                     <NameLink href="https://www.acmilab.org/people/zachary-lipton/">
                       Zachary Lipton
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (Professor, CS, Carnegie Mellon University; Director, Amazon Science),{" "}
                     <NameLink href="https://ruder.io/">
                       Sebastian Ruder
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (Lead, Multilingual Team, Cohere),{" "}
                     <NameLink href="http://marc.najork.org/">
                       Marc Najork
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (Director, DeepMind),{" "}
                     <NameLink href="https://www.microsoft.com/en-us/research/people/monojitc/">
                       Monojit Choudhury
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (Professor, MBZUAI; Ex Principal Scientist, Microsoft Research),{" "}
                     <NameLink href="https://www.linkedin.com/in/vinayakh/">
                       Vinayak Hegde
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (CTO, Microsoft for Startups),{" "}
                     <NameLink href="https://mengtingwan.github.io/">
                       Mengting Wan
-                    </NameLink>
-                    ,{" "}
+                    </NameLink> (Principal Scientist, Airbnb),{" "}
                     <NameLink href="https://www.linkedin.com/in/siddharth-sharma-31140210/">
                       Siddharth Sharma
-                    </NameLink>
-                    , and{" "}
+                    </NameLink> (Lead Applied Scientist, Amazon),{" "}
                     <NameLink href="https://www.linkedin.com/in/e10is/">
-                      Ed Harris
-                    </NameLink>
+                      Edouard Harris
+                    </NameLink> (Co-founder @Gladstone AI, YC’18)
                     .
                   </p>
                   <p className="text-gray-600">
@@ -327,7 +359,7 @@ function BookPage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex flex-wrap justify-center gap-4 pt-4"> {/* Center align */}
                   <a
                     title="O'Reilly"
                     target="_blank"
@@ -351,19 +383,6 @@ function BookPage() {
                       className="mr-2 transition-transform duration-200 group-hover:rotate-12"
                     />
                     Amazon
-                  </a>
-                  <a
-                    title="LinkedIn"
-                    href="https://www.linkedin.com/company/practical-nlp/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg px-6 py-3 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
-                  >
-                    <FontAwesomeIcon
-                      icon={faLinkedin}
-                      className="mr-2 transition-transform duration-200 group-hover:scale-110"
-                    />
-                    LinkedIn
                   </a>
                 </div>
               </div>
