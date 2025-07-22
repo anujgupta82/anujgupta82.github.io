@@ -6,6 +6,8 @@ function BlogPostPage() {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+   
+
   // Sample blog data for 2021
   const blogs2021 = [
     {
@@ -183,6 +185,39 @@ function BlogPostPage() {
     },
   ];
 
+   const blogs2016 = [
+    {
+      id: 1,
+      title: "Innovation in AI Teams",
+      date: "Oct 22, 2021",
+      excerpt:
+        "Innovation and AI are two words that often go hand in hand. However, depending on the type of setting an AI team is embedded in - the semantics on 'Innovation' can vary...",
+      content: `
+        <p>Innovation and AI are two words that often go hand in hand. However, depending on the type of setting an AI team is embedded in - the semantics on 'Innovation' can vary.</p>
+        <br>
+        <p>If you are part of the research lab, this often means AI team works on fundamental problems and create fundamental & new techniques to power cutting-edge solutions. They publish a lot, advance the entire area in a fundamental way - this is their true north star. It goes without saying this means lot of publications, paper presentation, talks & tutorials at research conferences, very close collaboration with academia etc.</p>
+        <br>
+        <p>When it comes to AI teams working in the product settings, the innovation here is of very different type. And in this post and next I will try n focus on this facet. There are mainly 4 type of innovations that happen in such teams:</p>
+        <br>
+        <p><b>1. Finding newer uses cases and touch points in your product(s) where AI can deliver a completely new experience to the user : </b>This innovation often creates USP/key differentiator for the product compared to the competition in the respective segment. And if the feature is killer, it changes the user's behavior which in turn changes user expectation. And then the competition has no other option but to play the catch-up game. This creates a very strong moat. For example, YouTube uses AI to generate subtitles in multiple languages on the fly. They have fundamentally changed user expectations and other platforms have to have a similar feature.</p>
+        <br>
+        <p>This kind of innovation is often not as easy as it may sound. I have written about this in an earlier post (ref : Hobbiton - Uses cases where AI can deliver great returns). This requires first principle thinking. Product managers who can envision features in a completely new way using AI, very close collaboration between AI & product teams to understand what is possible what is not, a very good execution to deliver A-class experience (despite AI model will make mistakes).</p>
+        <br>
+        <p><b>2. Building the dataset for the problem at hand : </b>For AI teams embedded in product settings, building a comprehensive dataset for the problem at hand is often 80% of the battle. Building such a dataset is never writing a bunch of queries on a massive data store at your disposal. AI Teams often have to come up with very smart strategies, hacks to augment data to arrive at a comprehensive dataset. Also, this is not a one-time activity but often highly iterative. What more type of data is needed - comes from the kind of mistakes your models are making.</p>
+        <br>
+        <p>I will soon be writing a dedicated post on some of the best examples I have seen/heard on innovative ideas to collect data.</p>
+        <br>
+        <p><b>3. Publishing paper/patent (doesn't happen that often) : </b>AI teams embedded in product teams do write patents and papers - but this is seldom their true north star.</p>
+        <br>
+        <p>So what about coming up with newer techniques? Rarely AI teams embedded in product teams do this. Why? Because in most cases, known techniques with a comprehensive dataset with rigorous evaluation itself can take your AI solution very very far on business metrics. From there on it is mostly a game of diminishing returns. Read about "later part of S curve" in my earlier post on "<a href="https://www.linkedin.com/posts/activity-6842736295173775360-etDf/" target="_blank" rel="noopener noreferrer">ROI in AI</a>". This is not true only if AI is the backbone of your product and your core value proposition.</p>
+        <br>
+        <p>To read more on AI in industry vs Academia, please read my earlier post "<a href="https://www.linkedin.com/posts/activity-6836567604467970048-nQu8/" target="_blank" rel="noopener noreferrer">Why machine learning in the industry is different from that is academia</a>"</p>
+        <br>
+        <p style="color: #3477ad;">#Learnings_From_AI_Trenches</p>
+      `,
+    },
+  ]; 
+
   const openModal = (blog) => {
     setSelectedBlog(blog);
     setIsModalOpen(true);
@@ -277,6 +312,145 @@ function BlogPostPage() {
           </div>
           {/* ... Add more BlogPostCard components for other blog posts, passing in their data as props */}
         </div>
+
+        {/* ——— 2016 Blog — Gradients for Neural Nets ——— */}
+<h2 className="archive__subtitle text-xl sm:text-2xl font-semibold text-blue-800 mb-3 sm:mb-4 mt-6 sm:mt-8 border-b pb-2">
+  2016
+</h2>
+<div className="list__item mb-4 sm:mb-6">
+  <BlogPostCard
+    title="Gradients for Neural Nets"
+    date="Aug 24, 2016"
+    excerpt="Computing Gradients that go into training Neural Nets"
+    onClick={() =>
+      openModal({
+        id: 20160824,
+        title: "Gradients for Neural Nets",
+        date: "Aug 24, 2016",
+        excerpt: "Computing Gradients that go into training Neural Nets",
+        content: `
+          <h2><strong>Introduction</strong></h2>
+          <p>Training neural nets is all about <a href="http://deeplearning.stanford.edu/wiki/index.php/Deriving_gradients_using_the_backpropagation_idea" target="_blank" style="color: blue; text-decoration: underline;">computing gradients</a>. In case you are new to this idea, refer to this awesome <a href="http://karpathy.github.io/neuralnets/" target="_blank" style="color: blue; text-decoration: underline;">post</a> by Andrej Karpathy.</p>
+          <p>Briefly, deep down every ML problem is an optimization problem. We want to "learn" (find) the weights which will result in least average loss. The way we do it is - start with arbitrary weights and keep adjusting them in small quantities until we get them right i.e. arrive at a set of values for which loss function has least value. Gradients tell us by how much should we adjust each of the weights. Not clear? Check this <a href="https://www.youtube.com/watch?v=yFPLyDwVifc" target="_blank" style="color: blue; text-decoration: underline;">video</a> by Andrew NG and this <a href="http://www.offconvex.org/2016/12/20/backprop/" target="_blank" style="color: blue; text-decoration: underline;">blog</a> by Sanjeev Arora.</p>
+          <br>
+
+          <p>In this post we will focus on the maths that goes into computing these gradients - we will systematically derive gradients. The complexity of calculations depends on 3 things:</p><br>
+          <ul>
+            <li>1. Depth of the network</li>
+            <li>2. Number of training examples (1 or more)</li>
+            <li>3. Number of components in input (1=scalar, &gt;1=vector)</li><br>
+          </ul>
+          <p> Through out this post we assume:</p><br>
+          <ul>
+            <li>1. No bias term.</li>
+            <li>2. \.\ is matrix multiplication, \*\ is element wise product, \X\ is scalar multiplication.</li>
+            <li>3. All activations are <a href="https://www.quora.com/What-is-the-sigmoid-function-and-what-is-its-use-in-machine-learnings-neural-networks" target="_blank" style="color: blue; text-decoration: underline;">sigmoid a.k.a logistic</a>. It is defined as \( f(u) = \frac{1}{1+e^{-u}}\). If you plot it, it comes as:</li>
+          </ul>
+
+          <img src="assets/gradients/logistic.png" height="200" width="270" alt="Sigmoid function"/>
+          <div class="thecap">Sigmoid function</div>
+          <p>It easy to see it is smooth and differentiable and bound between 0 and 1 [No? not straight forward - need to fix this].<p><br>
+
+          <p><strong>Derivative</strong><p>
+          <p>The derivative of logistic function \\(\\sigma\\) is simply:</p>
+
+          <p>(A)
+d
+d
+x
+σ
+(
+x
+)
+=
+σ
+(
+x
+)
+(
+1
+−
+σ
+(
+x
+)
+)</p>
+
+
+          <p>From where this comes ? read on:.</p>
+          <p>$$ \begin{align}</p>
+
+<p>\frac{d}{dx}\sigma(x) &= \frac{d}{dx} \big[ \frac{1}{1+e^{-x}}\big] \label{refB} \tag{B}\</p>
+
+<p>&= \frac{d}{dx} (1+e^{-x})^{-1} \</p>
+
+<p>&= -(1+e^{-x})^{-2}(-e^{-x}) \</p>
+
+<p>&= \frac{e^{-x}}{(1+e^{-x})^2} \</p>
+
+<p>&= \frac{1}{(1+e^{-x})} . \frac{e^{-x}}{(1+e^{-x})} \</p>
+
+<p>&= \frac{1}{(1+e^{-x})} . \frac{1 + e^{-x} -1}{(1+e^{-x})} \</p>
+
+<p>&= \frac{1}{(1+e^{-x})} . \big( 1 - \frac{e^{-x}}{(1+e^{-x})} \big) \</p>
+
+<p>&= \sigma(x)(1-\sigma(x)) \label{refC} \tag{C}</p>
+
+<p>\end{align} $$</p>
+
+<p>likewise,</p>
+
+<p>(D)
+d
+d
+x
+σ
+(
+a
+x
+)
+=
+a
+(
+σ
+(
+a
+x
+)
+)
+(
+1
+−
+σ
+(
+a
+x
+)
+)<p/>
+
+   <p>We will be using the above result a lot, so make sure you understand it. If it is not clear, have a look at this<a href="http://kawahara.ca/how-to-compute-the-derivative-of-a-sigmoid-function-fully-worked-example/" target="_blank" style="color: blue; text-decoration: underline;"> post</a>.</p>
+
+
+          <p>To compute the gradients, we will start with the simplest case and increase the complexity gradually. To keep things simple we will complete it in 7 parts</p>
+
+         <ol start="1">
+            <li><a href="https://github.com/anujgupta82/anujgupta82.github.io_old/blob/master/_posts/2016-08-26-gradients-1.markdown" style="color: blue; text-decoration: underline;"> layer network, 1 training example (scalar)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/08/28/gradients-2/" style="color: blue; text-decoration: underline;">1 layer network, 1 training example (vector)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/08/30/gradients-3/" style="color: blue; text-decoration: underline;">1 layer network, batch training (>1 training examples where each is a vector)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/09/04/gradients-4-1/" style="color: blue; text-decoration: underline;">2 layer network with 1 node hidden layer, 1 training example (vector)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" style="color: blue; text-decoration: underline;">2 layer network with 2 node hidden layer, 1 training example (vector)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" style="color: blue; text-decoration: underline;">2 layer network, batch training (>1 training examples where each is a vector)</a></li>
+            <li><a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" style="color: blue; text-decoration: underline;">Generalization and take home</a></li>
+          </ol>
+          <br>
+
+
+          <a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Next</a>
+        `,
+      })
+    }
+  />
+</div>
       </div>
 
       {/* Modal for displaying full blog content */}
