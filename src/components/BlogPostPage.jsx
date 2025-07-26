@@ -211,7 +211,7 @@ function BlogPostPage() {
             <li>3. All activations are <a href="https://www.quora.com/What-is-the-sigmoid-function-and-what-is-its-use-in-machine-learnings-neural-networks" target="_blank" style="color: blue; text-decoration: underline;">sigmoid a.k.a logistic</a>. It is defined as \( f(u) = \frac{1}{1+e^{-u}}\). If you plot it, it comes as:</li>
           </ul>
 
-          <img src="assets/images/logistic.png" height="200" width="270" alt="Sigmoid function"/>
+          <img src="assets/gradeints/logistic.png" height="200" width="270" alt="Sigmoid function"/>
           <div class="thecap">Sigmoid function</div>
           <p>It easy to see it is smooth and differentiable and bound between 0 and 1 [No? not straight forward - need to fix this].<p><br>
 
@@ -314,15 +314,15 @@ x
     },
     {
       id: 2,
-      title: "1 layer network, 1 training example (scalar)",
+      title: "Gradients - Part 1",
       date: "Aug 26, 2016",
       excerpt:
-        "Innovation and AI are two words that often go hand in hand. However, depending on the type of setting an AI team is embedded in - the semantics on 'Innovation' can vary...",
+        "Part 1 of computing gradients for training Neural Nets",
       content: `
       <h2><strong> 1 layer network, 1 training example (scalar)</strong></h2>
       <br>
       <p>Consider a simplest version of a neural net - 1 layer, 1 input node (scalar)</p>
-      <img src="assets/images/NN_1_1.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
+      <img src="assets/gradients/NN_1_1.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
       <p>simple neural net
 Input is (x,y) : x, y both are scalars. (Later on every thing will be a matrix, so just to be using same notaion. We will abuse the notation to express scalars as matrix of dimension 1 \(\times\) 1). Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 1}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. Let W be weight matrix. In this case its 
 [
@@ -375,6 +375,210 @@ Then, eq \eqref{ref4} reduces to: $$ \begin{align} \frac{\partial L}{\partial W}
       
       `
     },
+    {
+      id: 3,
+      title: "Gradients - Part 2",
+      date: "Aug 28, 2016",
+      excerpt:
+        "Part 2 of computing gradients for training Neural Nets",
+      content: `
+      <h2><strong>1 layer network, 1 input (vector)</strong></h2>
+      <br>
+      <p>Our neural net still has 1 layer, but now the input is a vector.</P>
+      <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
+      <p>
+Neural net with 1 layer, but input is vector</p>
+<p>Input is \((\vec{X},y)\) : \(\vec{X}\) is a vector, while y is a scalar.</p><br>
+<p>\(X = [x^1 ~~x^2 ~~x^3]\)       \(x^i = i^{th}\) component of \(\vec{X}\).</p><br>
+<p>Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 3}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. W, weight matrix is 
+[
+W
+]
+3
+×
+1
+
+</p><br>
+<p>W
+=
+[
+w
+1
+w
+2
+w
+3
+]</p><br>
+
+<p>Let \( \hat{y} \) be predicted output. In matrix format, \([\hat{y}]_{\scriptscriptstyle 1\times 1}\)</p><br>
+
+<p>$$
+\begin{align}
+\hat{y} & = \sigma ([X] . [W]) \label{ref101} \tag{10.1} \\
+& = \frac{1}{1 + e^{-[X] . [W]}} \label{ref102} \tag{10.2} \\
+& = \frac{1}{1 + e^{-(x^1 w_1 + x^2 w_2 + x^3 w_3)}} \label{ref103} \tag{10.3} \\
+\end{align}
+$$</p><br>
+
+<p>Like before, we will use half of squared error loss. $$ L = \frac{1}{2} (y - \hat{y})^{2} $$
+
+Let's first compute gradients.<p><br>
+
+<p>$$
+\begin{equation}
+\nabla_{W} L = \frac{\partial L}{\partial W} \\
+\nabla_{W} L = \begin{bmatrix}
+\frac{\partial L}{\partial w_{1}} \\
+\frac{\partial L}{\partial w_{2}} \\
+\frac{\partial L}{\partial w_{3}} \\
+\end{bmatrix}
+\label{ref11} \tag{11}
+\end{equation}
+$$</p><br>
+<p>So, lets compute \( \frac{\partial L}{\partial w_{1}} \)</p><br>
+
+<p>$$
+\begin{align}
+\frac{\partial L}{\partial w_1} &= \frac{\partial L}{\partial \hat{y}} * \frac{\partial \hat{y}}{\partial w_1} \label{ref12} \tag{12} \\
+\frac{\partial L}{\partial \hat{y}} &= \frac{1}{2} \times 2 \times (y - \hat{y})^{1} \times (-1) \label{ref13} \tag{13} \\
+\frac{\partial \hat{y}}{\partial w_1} &= \big{(} \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times \big{(}1- \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times x_1 \dots & \text{using \eqref{ref102} & \eqref{ref103}} \label{ref14} \tag{14}\\
+& = \sigma ([X] . [W]) \times (1- \sigma ([X] . [W])) * x_1 \dots & \text{using \eqref{ref101}} & \label{ref15} \tag{15}\\
+& = \hat{y} \times (1- \hat{y}) \times x_1 \dots & \text{using \eqref{ref101}} & \label{ref16} \tag{16}\\
+\end{align}
+$$</p><br>
+
+<p>Substituting \eqref{ref13} & \eqref{ref16} in \eqref{ref12}, we get
+
+∂
+L
+∂
+w
+1
+=
+(
+(
+−
+1
+)
+×
+(
+y
+−
+y
+^
+)
+)
+×
+(
+y
+^
+×
+(
+1
+−
+y
+^
+)
+×
+x
+1
+)
+=
+−
+(
+y
+−
+y
+^
+)
+×
+y
+^
+×
+(
+1
+−
+y
+^
+)
+×
+x
+1
+=
+(
+y
+^
+−
+y
+)
+×
+y
+^
+×
+(
+1
+−
+y
+^
+)
+×
+x
+1
+
+Thus, in general: $$ \begin{align} \frac{\partial L}{\partial w_i} &= (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_i \label{ref17} \tag{17}\ \end{align} $$
+
+Using \eqref{ref17} in \eqref{ref11}</p><br>
+
+<p>
+$$
+\begin{equation}
+\frac{\partial L}{\partial W} = \begin{bmatrix}
+(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_1 \\
+(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_2 \\
+(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_3 \\
+\end{bmatrix}
+\label{ref18} \tag{18}
+\end{equation}
+$$</p><br><br>
+
+<p>$$
+\begin{equation}
+= \begin{bmatrix}
+x^1 \\
+x^2 \\
+x^3 \\
+\end{bmatrix}
+* [(\hat{y} - y) \times \hat{y} \times (1- \hat{y})]
+\label{ref19} \tag{19}
+\end{equation}
+$$</p>
+
+<p>Let,
+
+\begin{align} \Delta l_{1} = (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \label{ref20} \tag{20} \ \end{align}
+
+Using \eqref{ref20} in \eqref{ref19}
+
+∂
+L
+∂
+W
+=
+[
+X
+T
+]
+.
+Δ
+l
+1</p>
+
+<a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Prev</a>
+<a href="https://anujgupta82.github.io/2016/08/26/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
+
+      `
+    },
+   
   ]; 
 
   const openModal = (blog) => {
