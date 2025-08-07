@@ -863,7 +863,7 @@ x
       <h2><strong> 1 layer network, 1 training example (scalar)</strong></h2>
       <br>
       <p>Consider a simplest version of a neural net - 1 layer, 1 input node (scalar)</p>
-      <img src="assets/gradients/NN_1_1.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
+      <img src="/images/NN_1_1.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
       <p>simple neural net
 Input is (x,y) : x, y both are scalars. (Later on every thing will be a matrix, so just to be using same notaion. We will abuse the notation to express scalars as matrix of dimension 1 (	imes) 1). Thus, in matrix form x,y are $$[X]{scriptscriptstyle 1	imes 1}$$ and $$[y]{scriptscriptstyle 1	imes 1}$$. Let W be weight matrix. In this case its 
 [
