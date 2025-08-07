@@ -760,7 +760,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             <li>3. All activations are <a href="https://www.quora.com/What-is-the-sigmoid-function-and-what-is-its-use-in-machine-learnings-neural-networks" target="_blank" style="color: blue; text-decoration: underline;">sigmoid a.k.a logistic</a>. It is defined as ( f(u) = \frac{1}{1+e^{-u}}). If you plot it, it comes as:</li>
           </ul>
 
-          <img src="assets/gradeints/logistic.png" height="200" width="270" alt="Sigmoid function"/>
+          <img src="/images/logistic.png" height="200" width="270" alt="Sigmoid function"/>
           <div class="thecap">Sigmoid function</div>
           <p>It easy to see it is smooth and differentiable and bound between 0 and 1 [No? not straight forward - need to fix this].<p><br>
 
