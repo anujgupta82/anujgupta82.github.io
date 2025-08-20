@@ -831,30 +831,30 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     
     <p>Let \\(\\hat{y}\\) be the predicted output. Then:</p>
     <p>
-    \\begin{align}
+    \\(\\begin{align}
     \\hat{y} = \\sigma(Wx) = \\frac{1}{1 + e^{-[X] \\cdot [W]}} \\tag{0} 
-    \\end{align}
+    \\end{align}\\)
     </p>
     
     <p>Let loss be squared error loss. For ease of maths we take \\(\\frac{1}{2}\\) of it:</p>
     
     <p>
-    \\begin{align}
+    \\(\\begin{align}
    L = \\frac{1}{2}(y - \\hat{y})^2
-    \\end{align}
+    \\end{align}\\)
     </p>
     
     <p>Let's compute gradients: \\( \\frac{\\partial L}{\\partial W} \\)</p>
     <br>
     
     <p>
-    \\begin{align}
+    \\(\\begin{align}
   \\frac{\\partial L}{\\partial W} & = \\frac{\\partial L}{\\partial \\hat{y}} \\times \\frac{\\partial \\hat{y}}{\\partial W} \\tag{1}\\\\
   \\frac{\\partial L}{\\partial \\hat{y}} &= \\frac{1}{2} \\times 2 \\times (y - \\hat{y})^{1} \\times (-1) \\tag{2}\\\\
   \\frac{\\partial \\hat{y}}{\\partial W} &= \\left(\\frac{1}{1 + e^{-[X] . [W]}}\\right) \\times \\left(1- \\frac{1}{1 + e^{-[X] . [W]}}\\right) * X \\tag{3}\\\\
   & = \\sigma (Wx) \\times (1- \\sigma (Wx)) * X \\\\
   & = \\hat{y} \\times (1 - \\hat{y}) * X \\tag{4}\\\\
-  \\end{align}
+  \\end{align}\\)
     </p>
     <br>
     
@@ -862,25 +862,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     <br>
     
     <p>
-    \\begin{align}
+    \\(\\begin{align}
     \\frac{\\partial L}{\\partial W} &= \\left(-(y - \\hat{y})\\right) \\times \\left(\\hat{y} \\times (1 - \\hat{y}) \\times x\\right) \\\\
     &= -(y - \\hat{y}) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x \\\\
     &= (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x \\tag{5} 
-    \\end{align}
+   \\end{align}\\)
     </p>
     <br>
     
     <p>Let:
-     \\begin{align}
-    \\Delta l_1 = (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\tag{6}
-     \\end{align}</p>
+      \\(\\begin{align}
+       (\\Delta l_1 = (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\tag{6}
+       
+      \\end{align} \\)
+      </p>
 
     <p>Then, eq (4)reduces to:
-    \\begin{align}
+    \\(\\begin{align}
     \\frac{\\partial L}{\\partial W} &= \\Delta l_1 \\times x \\\\
     &= \\Delta l_1 \\ast X \\\\
-    &= [X^T] \\cdot \\Delta l_1 \\tag{7} 
-    \\end{align}</p>
+    &= [X^T] \\cdot \\Delta l_1 \\tag{6} 
+    \\end{align}\\)
+    </p>
     
     <br>
     <a href="https://anujgupta82.github.io/2016/08/26/gradients-0/" class="btn btn-primary" style="color: blue;">Prev</a>
