@@ -296,7 +296,7 @@ function BlogPostPage() {
     
     <p>
     \\(\\begin{align}
-   L = \\frac{1}{2}(y - \\hat{y})^2
+    L = \\frac{1}{2}(y - \\hat{y})^2
     \\end{align}\\)
     </p>
     
@@ -337,7 +337,7 @@ function BlogPostPage() {
     \\(\\begin{align}
     \\frac{\\partial L}{\\partial W} &= \\Delta l_1 \\times x \\\\
     &= \\Delta l_1 \\ast X \\\\
-    &= [X^T] \\cdot \\Delta l_1 \\tag{6} 
+    &= [X^T] \\cdot \\Delta l_1 \\tag{7} 
     \\end{align}\\)
     </p>
     
