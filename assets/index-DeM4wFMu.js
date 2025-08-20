@@ -840,7 +840,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     
     <p>
     \\(\\begin{align}
-   L = \\frac{1}{2}(y - \\hat{y})^2
+    L = \\frac{1}{2}(y - \\hat{y})^2
     \\end{align}\\)
     </p>
     
@@ -881,7 +881,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     \\(\\begin{align}
     \\frac{\\partial L}{\\partial W} &= \\Delta l_1 \\times x \\\\
     &= \\Delta l_1 \\ast X \\\\
-    &= [X^T] \\cdot \\Delta l_1 \\tag{6} 
+    &= [X^T] \\cdot \\Delta l_1 \\tag{7} 
     \\end{align}\\)
     </p>
     
