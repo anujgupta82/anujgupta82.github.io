@@ -272,68 +272,78 @@ function BlogPostPage() {
   `,
 },
     {
-      id: 2,
-      title: "Gradients - Part 1",
-      date: "Aug 26, 2016",
-      excerpt:
-        "Part 1 of computing gradients for training Neural Nets",
-      content: `
-      <h2><strong> 1 layer network, 1 training example (scalar)</strong></h2>
-      <br>
-      <p>Consider a simplest version of a neural net - 1 layer, 1 input node (scalar)</p>
-      <img src="/images/NN_1_1.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
-      <p>simple neural net
-Input is (x,y) : x, y both are scalars. (Later on every thing will be a matrix, so just to be using same notaion. We will abuse the notation to express scalars as matrix of dimension 1 \(\times\) 1). Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 1}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. Let W be weight matrix. In this case its 
-[
-W
-]
-1
-×
-1</p>
+  id: 2,
+  title: "Gradients - Part 1",
+  date: "Aug 26, 2016",
+  excerpt: "Part 1 of computing gradients for training Neural Nets",
+  content: `
+    <h2><strong>1 layer network, 1 training example (scalar)</strong></h2>
+    <br>
+    <p>Consider a simplest version of a neural net - 1 layer, 1 input node (scalar)</p>
+    <img src="/images/NN_1_1.jpeg" height="200" width="270" alt="Neural Network diagram"/>
+    <div class="thecap">Simple neural net</div>
+    
+    <p>Input is (x,y): x, y both are scalars. (Later on everything will be a matrix, so just to be using same notation. We will abuse the notation to express scalars as matrix of dimension 1 \\(\\times\\) 1). Thus, in matrix form x,y are \\([X]_{1\\times 1}\\) and \\([y]_{1\\times 1}\\). Let W be weight matrix. In this case it's \\([W]_{1\\times 1}\\)</p>
+    
+    <p>Let \\(\\hat{y}\\) be the predicted output. Then:</p>
+    <p>
+    \\begin{align}
+    \\hat{y} = \\sigma(Wx) = \\frac{1}{1 + e^{-[X] \\cdot [W]}} \\tag{0} 
+    \\end{align}
+    </p>
+    
+    <p>Let loss be squared error loss. For ease of maths we take \\(\\frac{1}{2}\\) of it:</p>
+    
+    <p>
+    \\begin{align}
+   L = \\frac{1}{2}(y - \\hat{y})^2
+    \\end{align}
+    </p>
+    
+    <p>Let's compute gradients: \\( \\frac{\\partial L}{\\partial W} \\)</p>
+    <br>
+    
+    <p>
+    \\begin{align}
+  \\frac{\\partial L}{\\partial W} & = \\frac{\\partial L}{\\partial \\hat{y}} \\times \\frac{\\partial \\hat{y}}{\\partial W} \\tag{1}\\\\
+  \\frac{\\partial L}{\\partial \\hat{y}} &= \\frac{1}{2} \\times 2 \\times (y - \\hat{y})^{1} \\times (-1) \\tag{2}\\\\
+  \\frac{\\partial \\hat{y}}{\\partial W} &= \\left(\\frac{1}{1 + e^{-[X] . [W]}}\\right) \\times \\left(1- \\frac{1}{1 + e^{-[X] . [W]}}\\right) * X \\tag{3}\\\\
+  & = \\sigma (Wx) \\times (1- \\sigma (Wx)) * X \\\\
+  & = \\hat{y} \\times (1 - \\hat{y}) * X \\tag{4}\\\\
+  \\end{align}
+    </p>
+    <br>
+    
+    <p>Substituting (2) & (3) in (4), we get:</p>
+    <br>
+    
+    <p>
+    \\begin{align}
+    \\frac{\\partial L}{\\partial W} &= \\left(-(y - \\hat{y})\\right) \\times \\left(\\hat{y} \\times (1 - \\hat{y}) \\times x\\right) \\\\
+    &= -(y - \\hat{y}) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x \\\\
+    &= (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x \\tag{5} 
+    \\end{align}
+    </p>
+    <br>
+    
+    <p>Let:
+     \\begin{align}
+    \\Delta l_1 = (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\tag{6}
+     \\end{align}</p>
 
-<p>Let \( \hat{y} \) be the predicted output. Then, $$ \hat{y} = \sigma (Wx) = \frac{1}{1 + e^{-[X] . [W]}} \label{ref0} \tag{0}$$
-
-Let loss be squared error loss. For ease of maths we take \( \frac{1}{2} \) of it. $$ L = \frac{1}{2} (y - \hat{y})^{2} $$
-
-Let's compute gradients, 
-∇
-W
-L
-=
-∂
-L
-∂
-W</p>
-<br>
-<p>$$
-\begin{align}
-\frac{\partial L}{\partial W} & = \frac{\partial L}{\partial \hat{y}} \times \frac{\partial \hat{y}}{\partial W} \label{ref1} \tag{1}\\
-\frac{\partial L}{\partial \hat{y}} &= \frac{1}{2} \times 2 \times (y - \hat{y})^{1} \times (-1) \label{ref2} \tag{2}\\
-\frac{\partial \hat{y}}{\partial W} &= \big{(} \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times \big{(}1- \frac{1}{1 + e^{-[X] . [W]}} \big{)} * X \dots && \text{using [Eq C, Part-0]} \label{ref3} \tag{3}\\
-& = \sigma (Wx) \times (1- \sigma (Wx)) * X \dots && \text{using \eqref{ref0}} \\
-& = \hat{y} \times (1 - \hat{y}) * X \dots && \text{using \eqref{ref0}} \label{ref33}\\
-\end{align}
-$$</p><br>
-
-<p>Substituting \eqref{ref2} & \eqref{ref3} in \eqref{ref1}, we get</p>
-<br>
-<p>$$
-\begin{align}
-\frac{\partial L}{\partial W} &= \big{(} (-1) \times (y - \hat{y}) \big{)} \times \big{(} \hat{y} \times (1- \hat{y}) \times x \big{)}\ \\
-&= -(y - \hat{y}) \times \hat{y} \times (1- \hat{y}) \times x \\
-&= (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x \label{ref4} \tag{4} \\
-\end{align}
-$$</p><br>
-<p>Let,
-
-\begin{align} \Delta l_{1} = (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \label{ref5} \tag{5} \ \end{align}
-
-Then, eq \eqref{ref4} reduces to: $$ \begin{align} \frac{\partial L}{\partial W} &= \Delta l_{1} \times x \ & = \Delta l_{1} * X \ & = [X^{T}] . \Delta l_{1} \label{ref6} \tag{6} \ \end{align} $$</p>
-<a href="https://anujgupta82.github.io/2016/08/26/gradients-0/" class="btn btn-primary" style="color: blue;">Prev</a>
-<a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Next</a>
-      
-      `
-    },
+    <p>Then, eq (4)reduces to:
+    \\begin{align}
+    \\frac{\\partial L}{\\partial W} &= \\Delta l_1 \\times x \\\\
+    &= \\Delta l_1 \\ast X \\\\
+    &= [X^T] \\cdot \\Delta l_1 \\tag{7} 
+    \\end{align}</p>
+    
+    <br>
+    <a href="https://anujgupta82.github.io/2016/08/26/gradients-0/" class="btn btn-primary" style="color: blue;">Prev</a>
+    <a href="https://anujgupta82.github.io/2016/08/28/gradients-2/" class="btn btn-primary" style="color: blue;">Next</a>
+  `
+}
+,
     {
       id: 3,
       title: "Gradients - Part 2",
