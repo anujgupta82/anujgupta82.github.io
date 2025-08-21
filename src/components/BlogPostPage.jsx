@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BlogPostCard from "./BlogPostCard"; // Import BlogPostCard component
 import BlogModal from "./BlogModal"; // Import BlogModal component
 import BlogViewer from "../components/BlogViewer";
-
+import NN_2_2 from "../assets/gradients/NN_2_2.jpeg";
 function BlogPostPage() {
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -347,209 +347,316 @@ function BlogPostPage() {
   `
 }
 ,
-    {
-      id: 3,
-      title: "Gradients - Part 2",
-      date: "Aug 28, 2016",
-      excerpt:
-        "Part 2 of computing gradients for training Neural Nets",
-      content: `
-      <h2><strong>1 layer network, 1 input (vector)</strong></h2>
-      <br>
-      <p>Our neural net still has 1 layer, but now the input is a vector.</P>
-      <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
-      <p>
-Neural net with 1 layer, but input is vector</p>
-<p>Input is \((\vec{X},y)\) : \(\vec{X}\) is a vector, while y is a scalar.</p><br>
-<p>\(X = [x^1 ~~x^2 ~~x^3]\)       \(x^i = i^{th}\) component of \(\vec{X}\).</p><br>
-<p>Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 3}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. W, weight matrix is 
-[
-W
-]
-3
-×
-1
+//     {
+//       id: 3,
+//       title: "Gradients - Part 2",
+//       date: "Aug 28, 2016",
+//       excerpt:
+//         "Part 2 of computing gradients for training Neural Nets",
+//       content: `
+//       <h2><strong>1 layer network, 1 input (vector)</strong></h2>
+//       <br>
+//       <p>Our neural net still has 1 layer, but now the input is a vector.</P>
+//       <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
+//       <p>
+// Neural net with 1 layer, but input is vector</p>
+// <p>Input is \((\vec{X},y)\) : \(\vec{X}\) is a vector, while y is a scalar.</p><br>
+// <p>\(X = [x^1 ~~x^2 ~~x^3]\)       \(x^i = i^{th}\) component of \(\vec{X}\).</p><br>
+// <p>Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 3}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. W, weight matrix is 
+// [
+// W
+// ]
+// 3
+// ×
+// 1
 
-</p><br>
-<p>W
-=
-[
-w
-1
-w
-2
-w
-3
-]</p><br>
+// </p><br>
+// <p>W
+// =
+// [
+// w
+// 1
+// w
+// 2
+// w
+// 3
+// ]</p><br>
 
-<p>Let \( \hat{y} \) be predicted output. In matrix format, \([\hat{y}]_{\scriptscriptstyle 1\times 1}\)</p><br>
+// <p>Let \( \hat{y} \) be predicted output. In matrix format, \([\hat{y}]_{\scriptscriptstyle 1\times 1}\)</p><br>
 
-<p>$$
-\begin{align}
-\hat{y} & = \sigma ([X] . [W]) \label{ref101} \tag{10.1} \\
-& = \frac{1}{1 + e^{-[X] . [W]}} \label{ref102} \tag{10.2} \\
-& = \frac{1}{1 + e^{-(x^1 w_1 + x^2 w_2 + x^3 w_3)}} \label{ref103} \tag{10.3} \\
-\end{align}
-$$</p><br>
+// <p>$$
+// \begin{align}
+// \hat{y} & = \sigma ([X] . [W]) \label{ref101} \tag{10.1} \\
+// & = \frac{1}{1 + e^{-[X] . [W]}} \label{ref102} \tag{10.2} \\
+// & = \frac{1}{1 + e^{-(x^1 w_1 + x^2 w_2 + x^3 w_3)}} \label{ref103} \tag{10.3} \\
+// \end{align}
+// $$</p><br>
 
-<p>Like before, we will use half of squared error loss. $$ L = \frac{1}{2} (y - \hat{y})^{2} $$
+// <p>Like before, we will use half of squared error loss. $$ L = \frac{1}{2} (y - \hat{y})^{2} $$
 
-Let's first compute gradients.<p><br>
+// Let's first compute gradients.<p><br>
 
-<p>$$
-\begin{equation}
-\nabla_{W} L = \frac{\partial L}{\partial W} \\
-\nabla_{W} L = \begin{bmatrix}
-\frac{\partial L}{\partial w_{1}} \\
-\frac{\partial L}{\partial w_{2}} \\
-\frac{\partial L}{\partial w_{3}} \\
-\end{bmatrix}
-\label{ref11} \tag{11}
-\end{equation}
-$$</p><br>
-<p>So, lets compute \( \frac{\partial L}{\partial w_{1}} \)</p><br>
+// <p>$$
+// \begin{equation}
+// \nabla_{W} L = \frac{\partial L}{\partial W} \\
+// \nabla_{W} L = \begin{bmatrix}
+// \frac{\partial L}{\partial w_{1}} \\
+// \frac{\partial L}{\partial w_{2}} \\
+// \frac{\partial L}{\partial w_{3}} \\
+// \end{bmatrix}
+// \label{ref11} \tag{11}
+// \end{equation}
+// $$</p><br>
+// <p>So, lets compute \( \frac{\partial L}{\partial w_{1}} \)</p><br>
 
-<p>$$
-\begin{align}
-\frac{\partial L}{\partial w_1} &= \frac{\partial L}{\partial \hat{y}} * \frac{\partial \hat{y}}{\partial w_1} \label{ref12} \tag{12} \\
-\frac{\partial L}{\partial \hat{y}} &= \frac{1}{2} \times 2 \times (y - \hat{y})^{1} \times (-1) \label{ref13} \tag{13} \\
-\frac{\partial \hat{y}}{\partial w_1} &= \big{(} \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times \big{(}1- \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times x_1 \dots & \text{using \eqref{ref102} & \eqref{ref103}} \label{ref14} \tag{14}\\
-& = \sigma ([X] . [W]) \times (1- \sigma ([X] . [W])) * x_1 \dots & \text{using \eqref{ref101}} & \label{ref15} \tag{15}\\
-& = \hat{y} \times (1- \hat{y}) \times x_1 \dots & \text{using \eqref{ref101}} & \label{ref16} \tag{16}\\
-\end{align}
-$$</p><br>
+// <p>$$
+// \begin{align}
+// \frac{\partial L}{\partial w_1} &= \frac{\partial L}{\partial \hat{y}} * \frac{\partial \hat{y}}{\partial w_1} \label{ref12} \tag{12} \\
+// \frac{\partial L}{\partial \hat{y}} &= \frac{1}{2} \times 2 \times (y - \hat{y})^{1} \times (-1) \label{ref13} \tag{13} \\
+// \frac{\partial \hat{y}}{\partial w_1} &= \big{(} \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times \big{(}1- \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times x_1 \dots & \text{using \eqref{ref102} & \eqref{ref103}} \label{ref14} \tag{14}\\
+// & = \sigma ([X] . [W]) \times (1- \sigma ([X] . [W])) * x_1 \dots & \text{using \eqref{ref101}} & \label{ref15} \tag{15}\\
+// & = \hat{y} \times (1- \hat{y}) \times x_1 \dots & \text{using \eqref{ref101}} & \label{ref16} \tag{16}\\
+// \end{align}
+// $$</p><br>
 
-<p>Substituting \eqref{ref13} & \eqref{ref16} in \eqref{ref12}, we get
+// <p>Substituting \eqref{ref13} & \eqref{ref16} in \eqref{ref12}, we get
 
-∂
-L
-∂
-w
-1
-=
-(
-(
-−
-1
-)
-×
-(
-y
-−
-y
-^
-)
-)
-×
-(
-y
-^
-×
-(
-1
-−
-y
-^
-)
-×
-x
-1
-)
-=
-−
-(
-y
-−
-y
-^
-)
-×
-y
-^
-×
-(
-1
-−
-y
-^
-)
-×
-x
-1
-=
-(
-y
-^
-−
-y
-)
-×
-y
-^
-×
-(
-1
-−
-y
-^
-)
-×
-x
-1
+// ∂
+// L
+// ∂
+// w
+// 1
+// =
+// (
+// (
+// −
+// 1
+// )
+// ×
+// (
+// y
+// −
+// y
+// ^
+// )
+// )
+// ×
+// (
+// y
+// ^
+// ×
+// (
+// 1
+// −
+// y
+// ^
+// )
+// ×
+// x
+// 1
+// )
+// =
+// −
+// (
+// y
+// −
+// y
+// ^
+// )
+// ×
+// y
+// ^
+// ×
+// (
+// 1
+// −
+// y
+// ^
+// )
+// ×
+// x
+// 1
+// =
+// (
+// y
+// ^
+// −
+// y
+// )
+// ×
+// y
+// ^
+// ×
+// (
+// 1
+// −
+// y
+// ^
+// )
+// ×
+// x
+// 1
 
-Thus, in general: $$ \begin{align} \frac{\partial L}{\partial w_i} &= (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_i \label{ref17} \tag{17}\ \end{align} $$
+// Thus, in general: $$ \begin{align} \frac{\partial L}{\partial w_i} &= (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_i \label{ref17} \tag{17}\ \end{align} $$
 
-Using \eqref{ref17} in \eqref{ref11}</p><br>
+// Using \eqref{ref17} in \eqref{ref11}</p><br>
 
-<p>
-$$
-\begin{equation}
-\frac{\partial L}{\partial W} = \begin{bmatrix}
-(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_1 \\
-(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_2 \\
-(\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_3 \\
-\end{bmatrix}
-\label{ref18} \tag{18}
-\end{equation}
-$$</p><br><br>
+// <p>
+// $$
+// \begin{equation}
+// \frac{\partial L}{\partial W} = \begin{bmatrix}
+// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_1 \\
+// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_2 \\
+// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_3 \\
+// \end{bmatrix}
+// \label{ref18} \tag{18}
+// \end{equation}
+// $$</p><br><br>
 
-<p>$$
-\begin{equation}
-= \begin{bmatrix}
-x^1 \\
-x^2 \\
-x^3 \\
-\end{bmatrix}
-* [(\hat{y} - y) \times \hat{y} \times (1- \hat{y})]
-\label{ref19} \tag{19}
-\end{equation}
-$$</p>
+// <p>$$
+// \begin{equation}
+// = \begin{bmatrix}
+// x^1 \\
+// x^2 \\
+// x^3 \\
+// \end{bmatrix}
+// * [(\hat{y} - y) \times \hat{y} \times (1- \hat{y})]
+// \label{ref19} \tag{19}
+// \end{equation}
+// $$</p>
 
-<p>Let,
+// <p>Let,
 
-\begin{align} \Delta l_{1} = (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \label{ref20} \tag{20} \ \end{align}
+// \begin{align} \Delta l_{1} = (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \label{ref20} \tag{20} \ \end{align}
 
-Using \eqref{ref20} in \eqref{ref19}
+// Using \eqref{ref20} in \eqref{ref19}
 
-∂
-L
-∂
-W
-=
-[
-X
-T
-]
-.
-Δ
-l
-1</p>
+// ∂
+// L
+// ∂
+// W
+// =
+// [
+// X
+// T
+// ]
+// .
+// Δ
+// l
+// 1</p>
 
-<a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Prev</a>
-<a href="https://anujgupta82.github.io/2016/08/26/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
+// <a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Prev</a>
+// <a href="https://anujgupta82.github.io/2016/08/26/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
 
-      `
-    },
+//       `
+//     },
+{
+  id: 3,
+  title: "Gradients - Part 2",
+  date: "Aug 28, 2016",
+  excerpt: "Part 2 of computing gradients for training Neural Nets",
+  content: `
+    <h2><strong>1 layer network, 1 input (vector)</strong></h2>
+    <br>
+    <p>Our neural net still has 1 layer, but now the input is a vector.</p>
+    <img src="${NN_2_2}" height="200" width="270" alt="Neural Network diagram"/>
+    <div class="thecap">Neural net with 1 layer, but input is vector</div>
+    
+    <p>Input is \\((\\vec{X},y)\\): \\(\\vec{X}\\) is a vector, while y is a scalar.</p>
+    <br>
+    
+    <p>\\(X = [x^1 ~~x^2 ~~x^3]\\) where \\(x^i = i^{th}\\) component of \\(\\vec{X}\\).</p>
+    <br>
+    
+    <p>Thus, in matrix form x,y are \\([X]_{1\\times 3}\\) and \\([y]_{1\\times 1}\\). W, weight matrix is \\([W]_{3\\times 1}\\)</p>
+    <br>
+    
+    <p>\\(W = \\begin{bmatrix} w_1 \\\\ w_2 \\\\ w_3 \\end{bmatrix}\\)</p>
+    <br>
+    
+    <p>Let \\(\\hat{y}\\) be predicted output. In matrix format, \\([\\hat{y}]_{1\\times 1}\\)</p>
+    <br>
+    
+    <p>\\(\\begin{align}
+    \\hat{y} &= \\sigma([X] \\cdot [W]) \\tag{10.1} \\\\
+    &= \\frac{1}{1 + e^{-[X] \\cdot [W]}} \\tag{10.2}  \\\\
+    &= \\frac{1}{1 + e^{-(x^1 w_1 + x^2 w_2 + x^3 w_3)}} \\tag{10.3}
+    \\end{align}\\)</p>
+    <br>
+    
+    <p>Like before, we will use half of squared error loss:</p>
+    <p>\\(L = \\frac{1}{2}(y - \\hat{y})^2\\)</p>
+    
+    <p>Let's first compute gradients:</p>
+    <br>
+    
+    <p>\\(\\begin{equation}
+    \\nabla_W L = \\frac{\\partial L}{\\partial W} = \\begin{bmatrix}
+    \\frac{\\partial L}{\\partial w_1} \\\\
+    \\frac{\\partial L}{\\partial w_2} \\\\
+    \\frac{\\partial L}{\\partial w_3}
+    \\end{bmatrix} \\tag{11} 
+    \\end{equation}\\)</p>
+    <br>
+    
+    <p>So, let's compute \\(\\frac{\\partial L}{\\partial w_1}\\):</p>
+    <br>
+    
+    <p>\\(\\begin{align}
+    \\frac{\\partial L}{\\partial w_1} &= \\frac{\\partial L}{\\partial \\hat{y}} \\times \\frac{\\partial \\hat{y}}{\\partial w_1} \\tag{12}  \\\\[0.5em]
+    \\frac{\\partial L}{\\partial \\hat{y}} &= \\frac{1}{2} \\times 2 \\times (y - \\hat{y})^1 \\times (-1) \\\\
+    &= -(y - \\hat{y}) \\tag{13} \\\\[0.5em]
+    \\frac{\\partial \\hat{y}}{\\partial w_1} &= \\left(\\frac{1}{1 + e^{-[X] \\cdot [W]}}\\right) \\times \\left(1 - \\frac{1}{1 + e^{-[X] \\cdot [W]}}\\right) \\times x_1 \\\\
+    &\\qquad \\text{using } (10.2) \\text{ & } (10.3) \\tag{14}  \\\\
+    &= \\sigma([X] \\cdot [W]) \\times (1 - \\sigma([X] \\cdot [W])) \\times x_1 \\\\
+    &\\qquad \\text{using } (10.1) \\tag{15}  \\\\
+    &= \\hat{y} \\times (1 - \\hat{y}) \\times x_1 \\\\
+    &\\qquad \\text{using } using(10.1) \\tag{16} 
+    \\end{align}\\)</p>
+    <br>
+    
+    <p>Substituting (13) & (16) in (12), we get:</p>
+    
+    <p>\\(\\begin{align}
+    \\frac{\\partial L}{\\partial w_1} &= \\left(-(y - \\hat{y})\\right) \\times \\left(\\hat{y} \\times (1 - \\hat{y}) \\times x_1\\right) \\\\
+    &= -(y - \\hat{y}) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_1 \\\\
+    &= (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_1
+    \\end{align}\\)</p>
+    
+    <p>Thus, in general:</p>
+    <p>\\(\\frac{\\partial L}{\\partial w_i} = (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_i \\tag{17} \\)</p>
+    
+    <p>Using (17) in (11):</p>
+    <br>
+    
+    <p>\\(\\begin{equation}
+    \\frac{\\partial L}{\\partial W} = \\begin{bmatrix}
+    (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_1 \\\\
+    (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_2 \\\\
+    (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\times x_3
+    \\end{bmatrix} \\tag{18} 
+    \\end{equation}\\)</p>
+    <br>
+    
+    <p>\\(\\begin{equation}
+    = \\begin{bmatrix}
+    x^1 \\\\
+    x^2 \\\\
+    x^3
+    \\end{bmatrix} \\times [(\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y})] \\tag{19} 
+    \\end{equation}\\)</p>
+    
+    <p>Let:</p>
+    <p>\\(\\Delta l_1 = (\\hat{y} - y) \\times \\hat{y} \\times (1 - \\hat{y}) \\tag{20} \\)</p>
+    
+    <p>Using (20) in (19):</p>
+    <p>\\(\\frac{\\partial L}{\\partial W} = [X^T] \\cdot \\Delta l_1\\)</p>
+    
+    <br>
+    <a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Prev</a>
+    <a href="https://anujgupta82.github.io/2016/08/30/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
+  `
+},
     {
       id: 4,
       title: "Gradients - Part 3",
