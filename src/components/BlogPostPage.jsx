@@ -347,209 +347,7 @@ function BlogPostPage() {
   `
 }
 ,
-//     {
-//       id: 3,
-//       title: "Gradients - Part 2",
-//       date: "Aug 28, 2016",
-//       excerpt:
-//         "Part 2 of computing gradients for training Neural Nets",
-//       content: `
-//       <h2><strong>1 layer network, 1 input (vector)</strong></h2>
-//       <br>
-//       <p>Our neural net still has 1 layer, but now the input is a vector.</P>
-//       <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/>
-//       <p>
-// Neural net with 1 layer, but input is vector</p>
-// <p>Input is \((\vec{X},y)\) : \(\vec{X}\) is a vector, while y is a scalar.</p><br>
-// <p>\(X = [x^1 ~~x^2 ~~x^3]\)       \(x^i = i^{th}\) component of \(\vec{X}\).</p><br>
-// <p>Thus, in matrix form x,y are $$[X]{\scriptscriptstyle 1\times 3}$$ and $$[y]{\scriptscriptstyle 1\times 1}$$. W, weight matrix is 
-// [
-// W
-// ]
-// 3
-// ×
-// 1
 
-// </p><br>
-// <p>W
-// =
-// [
-// w
-// 1
-// w
-// 2
-// w
-// 3
-// ]</p><br>
-
-// <p>Let \( \hat{y} \) be predicted output. In matrix format, \([\hat{y}]_{\scriptscriptstyle 1\times 1}\)</p><br>
-
-// <p>$$
-// \begin{align}
-// \hat{y} & = \sigma ([X] . [W]) \label{ref101} \tag{10.1} \\
-// & = \frac{1}{1 + e^{-[X] . [W]}} \label{ref102} \tag{10.2} \\
-// & = \frac{1}{1 + e^{-(x^1 w_1 + x^2 w_2 + x^3 w_3)}} \label{ref103} \tag{10.3} \\
-// \end{align}
-// $$</p><br>
-
-// <p>Like before, we will use half of squared error loss. $$ L = \frac{1}{2} (y - \hat{y})^{2} $$
-
-// Let's first compute gradients.<p><br>
-
-// <p>$$
-// \begin{equation}
-// \nabla_{W} L = \frac{\partial L}{\partial W} \\
-// \nabla_{W} L = \begin{bmatrix}
-// \frac{\partial L}{\partial w_{1}} \\
-// \frac{\partial L}{\partial w_{2}} \\
-// \frac{\partial L}{\partial w_{3}} \\
-// \end{bmatrix}
-// \label{ref11} \tag{11}
-// \end{equation}
-// $$</p><br>
-// <p>So, lets compute \( \frac{\partial L}{\partial w_{1}} \)</p><br>
-
-// <p>$$
-// \begin{align}
-// \frac{\partial L}{\partial w_1} &= \frac{\partial L}{\partial \hat{y}} * \frac{\partial \hat{y}}{\partial w_1} \label{ref12} \tag{12} \\
-// \frac{\partial L}{\partial \hat{y}} &= \frac{1}{2} \times 2 \times (y - \hat{y})^{1} \times (-1) \label{ref13} \tag{13} \\
-// \frac{\partial \hat{y}}{\partial w_1} &= \big{(} \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times \big{(}1- \frac{1}{1 + e^{-[X] . [W]}} \big{)} \times x_1 \dots & \text{using \eqref{ref102} & \eqref{ref103}} \label{ref14} \tag{14}\\
-// & = \sigma ([X] . [W]) \times (1- \sigma ([X] . [W])) * x_1 \dots & \text{using \eqref{ref101}} & \label{ref15} \tag{15}\\
-// & = \hat{y} \times (1- \hat{y}) \times x_1 \dots & \text{using \eqref{ref101}} & \label{ref16} \tag{16}\\
-// \end{align}
-// $$</p><br>
-
-// <p>Substituting \eqref{ref13} & \eqref{ref16} in \eqref{ref12}, we get
-
-// ∂
-// L
-// ∂
-// w
-// 1
-// =
-// (
-// (
-// −
-// 1
-// )
-// ×
-// (
-// y
-// −
-// y
-// ^
-// )
-// )
-// ×
-// (
-// y
-// ^
-// ×
-// (
-// 1
-// −
-// y
-// ^
-// )
-// ×
-// x
-// 1
-// )
-// =
-// −
-// (
-// y
-// −
-// y
-// ^
-// )
-// ×
-// y
-// ^
-// ×
-// (
-// 1
-// −
-// y
-// ^
-// )
-// ×
-// x
-// 1
-// =
-// (
-// y
-// ^
-// −
-// y
-// )
-// ×
-// y
-// ^
-// ×
-// (
-// 1
-// −
-// y
-// ^
-// )
-// ×
-// x
-// 1
-
-// Thus, in general: $$ \begin{align} \frac{\partial L}{\partial w_i} &= (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_i \label{ref17} \tag{17}\ \end{align} $$
-
-// Using \eqref{ref17} in \eqref{ref11}</p><br>
-
-// <p>
-// $$
-// \begin{equation}
-// \frac{\partial L}{\partial W} = \begin{bmatrix}
-// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_1 \\
-// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_2 \\
-// (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \times x_3 \\
-// \end{bmatrix}
-// \label{ref18} \tag{18}
-// \end{equation}
-// $$</p><br><br>
-
-// <p>$$
-// \begin{equation}
-// = \begin{bmatrix}
-// x^1 \\
-// x^2 \\
-// x^3 \\
-// \end{bmatrix}
-// * [(\hat{y} - y) \times \hat{y} \times (1- \hat{y})]
-// \label{ref19} \tag{19}
-// \end{equation}
-// $$</p>
-
-// <p>Let,
-
-// \begin{align} \Delta l_{1} = (\hat{y} - y) \times \hat{y} \times (1- \hat{y}) \label{ref20} \tag{20} \ \end{align}
-
-// Using \eqref{ref20} in \eqref{ref19}
-
-// ∂
-// L
-// ∂
-// W
-// =
-// [
-// X
-// T
-// ]
-// .
-// Δ
-// l
-// 1</p>
-
-// <a href="https://anujgupta82.github.io/2016/08/26/gradients-1/" class="btn btn-primary" style="color: blue;">Prev</a>
-// <a href="https://anujgupta82.github.io/2016/08/26/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
-
-//       `
-//     },
 {
   id: 3,
   title: "Gradients - Part 2",
@@ -657,289 +455,416 @@ function BlogPostPage() {
     <a href="https://anujgupta82.github.io/2016/08/30/gradients-3/" class="btn btn-primary" style="color: blue;">Next</a>
   `
 },
-    {
-      id: 4,
-      title: "Gradients - Part 3",
-      date: "Aug 30, 2016",
-      excerpt:
-        "Part 3 of computing gradients for training Neural Nets",
-      content: `
-      <h2><strong>1 layer network, multiple training examples (each example is a vector)</strong></h2>
-      <p>Multiple training examples correspond to the scenario of batch training. Each input is still a vector. Our neural net still has 1 layer. For simplicity, assume we have 4 examples, each having 3 components.</p>
+//     {
+//       id: 4,
+//       title: "Gradients - Part 3",
+//       date: "Aug 30, 2016",
+//       excerpt:
+//         "Part 3 of computing gradients for training Neural Nets",
+//       content: `
+//       <h2><strong>1 layer network, multiple training examples (each example is a vector)</strong></h2>
+//       <p>Multiple training examples correspond to the scenario of batch training. Each input is still a vector. Our neural net still has 1 layer. For simplicity, assume we have 4 examples, each having 3 components.</p>
 
-      <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/><br>
+//       <img src="assets/gradients/NN_2_2.jpeg" height="200" width="270" alt="Neural Netwrok diagram"/><br>
 
-      <h3><strong>Weights</strong></h3>
-    <p>W, weight matrix is 
-[
-W
-]
-3
-×
-1</p>
-<p>W
-=
-[
-w
-1
-w
-2
-w
-3
-]</p>
+//       <h3><strong>Weights</strong></h3>
+//     <p>W, weight matrix is 
+// [
+// W
+// ]
+// 3
+// ×
+// 1</p>
+// <p>W
+// =
+// [
+// w
+// 1
+// w
+// 2
+// w
+// 3
+// ]</p>
+
+//     <h3><strong>Inputs and Outputs</strong></h3>
+//     <p>
+//       Input X now is a matrix \( [X]{\scriptscriptstyle 4 \times 3} \). \(X_i\) is the \(i^{th}\) sample. So, we now have 4 examples \(X_1 \ldots X_4\) , each of which is vector with 3 components. \(x_{i}^{j}\) is \(j^{th}\) component of \(X_i\) sample. So
+//     </p>
+//     <p>X
+// =
+// [
+// x
+// 1
+// 1
+// x
+// 1
+// 2
+// x
+// 1
+// 3
+// x
+// 2
+// 1
+// x
+// 2
+// 2
+// x
+// 2
+// 3
+// x
+// 3
+// 1
+// x
+// 3
+// 2
+// x
+// 3
+// 3
+// x
+// 4
+// 1
+// x
+// 4
+// 2
+// x
+// 4
+// 3
+// ]</p><br>
+
+
+//     <p>\(\vec{y}\) is a vector.</p>
+//     <p>y
+// =
+// [
+// y
+// 1
+// y
+// 2
+// y
+// 3
+// y
+// 4
+// ]</p>
+// <p>\(y_i\) = True label for \(i^{th}\) example.
+
+// Likewise, \(\vec{\hat{y}}\) is a vector where
+
+// \(\hat{y}_i\) = predicted label for \(i^{th}\) example. Value of \(\hat{y}_i\) is computed using \eqref{ref10}:
+
+// $$ \hat{y}i = \frac{1}{1+e^{-(x{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)}} \label{ref10} \tag{0} $$</p>
+
+//     <h3><strong>Loss</strong></h3>
+//     <p>Like before, we will use half of squared error loss but in this case it is the total gap in all 4 predictions. Therefore,
+
+// </p>
+//     <p>
+//       L
+// =
+// ∑
+// i
+// =
+// 1
+// 4
+// 1
+// 2
+// (
+// y
+// i
+// −
+// y
+// ^
+// i
+// )
+// 2
+//     </p><br>
+
+//     <h3><strong>Gradient</strong></h3>
+//     <p>Let's compute gradients.</p>
+//     <p>
+//       (1)
+// ∇
+// W
+// L
+// =
+// ∂
+// L
+// ∂
+// W
+// ∇
+// W
+// L
+// =
+// [
+// ∂
+// L
+// ∂
+// w
+// 1
+// ∂
+// L
+// ∂
+// w
+// 2
+// ∂
+// L
+// ∂
+// w
+// 3
+// ]
+//     </p>
+
+//     <p>First, lets compute only \( \frac{\partial L}{\partial w_{1}} \)</p>
+
+//     <p>$$ \begin{align} \frac{\partial L}{\partial w_1} &= \frac{\partial (\sum\limits_{i=1}^{4} \frac{1}{2} (y_i - \hat{y}i)^{2})}{\partial w_1} \ & = \sum\limits{i=1}^{4} \frac{\partial (\frac{1}{2} (y_i - \hat{y}i)^{2})}{\partial w_1} \ & = \sum\limits{i=1}^{4} \frac{\partial (\frac{1}{2} (y_i - \hat{y}_i)^{2})}{\partial \hat{y}_i} \times \frac{\partial \hat{y}_i}{w_1} \label{ref12} \tag{2}\ \end{align} $$</p><br>
+//     <p>
+//       (3)
+// ∂
+// (
+// 1
+// 2
+// (
+// y
+// i
+// −
+// y
+// ^
+// i
+// )
+// 2
+// )
+// ∂
+// y
+// ^
+// i
+// =
+// (
+// −
+// 1
+// )
+// ×
+// (
+// y
+// i
+// −
+// y
+// ^
+// i
+// )
+//     </p><br>
+    
+
+//     <p>$$ \begin{align} \frac{\partial \hat{y}i}{w_1} &= \sigma(x{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)(1 - \sigma(x_{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)) \times x_{i}^{1} \ & = \sigma( X_i . [W])(1 - \sigma( X_i . [W])) \times x_{i}^{1} \label{ref14} \tag{4}\ \end{align} $$
+//     Using \eqref{ref13} and \eqref{ref14} in \eqref{ref12}, we get:
+
+// $$ \begin{align} \frac{\partial L}{\partial w_1} = \sum\limits_{i=1}^{4} -(y_i - \hat{y}i) * [\sigma( X_i . [W])(1 - \sigma( X_i . [W])) \times x{i}^{1}] \label{ref15} \tag{5}\ \end{align} $$
+
+// $$ \frac{\partial L}{\partial w_1} = -(y_1 - \hat{y}1) * [\sigma( X_1 . [W])(1 - \sigma( X_1 . [W])) \times x{1}^{1}] + \</p><br>
+//     <p>
+//       ~~~~~~~~~~~~			-(y_3 - \hat{y}_3) * [\sigma( X_3 . [W])(1 - \sigma(X_3 . [W])) \times x_{3}^{1}] + \\
+// ~~~~~~~~~~			-(y_4 - \hat{y}_4) * [\sigma( X_4 . [W])(1 - \sigma(X_4 . [W])) \times x_{4}^{1}] \\
+// $$
+
+// $$
+// \frac{\partial L}{\partial w_1}  = (\hat{y}_1 - y_1) * [\sigma( X_1 . [W])(1 - \sigma( X_1 . [W])) \times x_{1}^{1}] + \\
+// ~~~~~~~~~~~~        (\hat{y}_2 - y_2) * [\sigma( X_2 . [W])(1 - \sigma(X_2 . [W])) \times x_{2}^{1}] + \\
+// ~~~~~~~~~~~~            (\hat{y}_3 - y_3) * [\sigma( X_3 . [W])(1 - \sigma(X_3 . [W])) \times x_{3}^{1}] + \\
+// ~~~~~~~~~~          (\hat{y}_4 - y_4) * [\sigma( X_4 . [W])(1 - \sigma(X_4 . [W])) \times x_{4}^{1}] \\
+// \label{ref16} \tag{6}\\
+// $$
+
+// Let, 
+// $$
+//  \Delta l_{1}^{i} = ((\hat{y}_i - y_i) *  [\sigma( X_i . [W])(1 - \sigma( X_i . [W]))] ~~~~~~\qquad\forall i \in (1,4) \label{ref17} \tag{7}\\
+// $$
+
+// Using \eqref{ref17} in \eqref{ref16}, we get:  
+// $$
+// \begin{align}
+// \frac{\partial L}{\partial w_1} =  \Delta l_{1}^{1} \times x_{1}^{1} + \Delta l_{1}^{2} \times x_{2}^{1} + \Delta l_{1}^{3} \times x_{3}^{1} + \Delta l_{1}^{4} \times x_{4}^{1} \label{ref18} \tag{8}\\
+// \end{align}
+// $$
+
+// Likewise, we get:
+
+// $$
+// \begin{align}
+// \frac{\partial L}{\partial w_2} &= \Delta l_{1}^{1} \times x_{1}^{2} + \Delta l_{1}^{2} \times x_{2}^{2} + \Delta l_{1}^{3} \times x_{3}^{2} + \Delta l_{1}^{4} \times x_{4}^{2} \label{ref19} \tag{9}\\
+// \end{align}
+// $$
+
+// $$
+// \begin{align}
+// \frac{\partial L}{\partial w_3} &= \Delta l_{1}^{1} \times x_{1}^{3} + \Delta l_{1}^{2} \times x_{2}^{3} + \Delta l_{1}^{3} \times x_{3}^{3} + \Delta l_{1}^{4} \times x_{4}^{3} \label{ref20} \tag{10}\\
+// \end{align}
+// $$
+
+// Using \eqref{ref18}, \eqref{ref19} and \eqref{ref20} in \eqref{ref11}, we get: 
+
+// $$
+// \begin{equation}
+// \frac{\partial L}{\partial W} = \begin{bmatrix}
+//      \Delta l_{1}^{1} \times x_{1}^{1} + \Delta l_{1}^{2} \times x_{2}^{1} + \Delta l_{1}^{3} \times x_{3}^{1} + \Delta l_{1}^{4} \times x_{4}^{1} \\
+//      \Delta l_{1}^{1} \times x_{1}^{2} + \Delta l_{1}^{2} \times x_{2}^{2} + \Delta l_{1}^{3} \times x_{3}^{2} + \Delta l_{1}^{4} \times x_{4}^{2} \\
+//      \Delta l_{1}^{1} \times x_{1}^{3} + \Delta l_{1}^{2} \times x_{2}^{3} + \Delta l_{1}^{3} \times x_{3}^{3} + \Delta l_{1}^{4} \times x_{4}^{3} \\
+//      \end{bmatrix}
+// \label{ref21} \tag{11}
+// \end{equation} 
+// $$
+
+// Simplifying: 
+
+// $$
+// \frac{\partial L}{\partial W} = \begin{bmatrix} x_{1}^{1} & x_{2}^{1} & x_{3}^{1} & x_{4}^{1} \\ x_{1}^{2} & x_{2}^{2} & x_{3}^{2} & x_{4}^{2} \\ x_{1}^{3} & x_{2}^{3} & x_{3}^{3} & x_{4}^{3} \end{bmatrix} . \left[ \begin{array}{c} \Delta l_{1}^{1} \\\Delta l_{1}^{2} \\\Delta l_{1}^{3} \\\Delta l_{1}^{4} \end{array} \right] 
+// $$
+
+// $$
+// \frac{\partial L}{\partial W} = \begin{bmatrix} x_{1}^{1} & x_{2}^{1} & x_{3}^{1} & x_{4}^{1} \\ x_{1}^{2} & x_{2}^{2} & x_{3}^{2} & x_{4}^{2} \\ x_{1}^{3} & x_{2}^{3} & x_{3}^{3} & x_{4}^{3} \end{bmatrix} . \left[ \begin{array}{c} \Delta l_{1}  \end{array} \right] 
+// $$
+
+// $$ 
+// \begin{align}
+// \frac{\partial L}{\partial W} &= [X^{T}] . \Delta l_{1} \\
+// \end{align}
+// $$
+    
+//     </p>
+
+//     <br/>
+//     <p>In the <a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" target="_blank" style="color: blue;">next post</a> we’ll explore gradients for networks with hidden layers.</p>
+
+//     <p>
+//       <a href="https://anujgupta82.github.io/2016/08/28/gradients-2/" target="_blank" style="color: blue;">Prev</a> |
+//       <a href="https://anujgupta82.github.io/2016/09/04/gradients-4-1/" target="_blank" style="color: blue;">Next</a>
+//     </p>
+//       `
+//     },
+{
+  id: 4,
+  title: "Gradients - Part 3",
+  date: "Aug 30, 2016",
+  excerpt: "Part 3 of computing gradients for training Neural Nets",
+  content: `
+    <h2><strong>1 layer network, multiple training examples (each example is a vector)</strong></h2>
+    <p>Multiple training examples correspond to the scenario of batch training. Each input is still a vector. Our neural net still has 1 layer. For simplicity, assume we have 4 examples, each having 3 components.</p>
+
+    <img src="${NN_2_2}" height="200" width="270" alt="Neural Network diagram"/><br>
+    <div class="thecap">Neural net with 1 layer, multiple vector inputs</div>
+
+    <h3><strong>Weights</strong></h3>
+    <p>The weight matrix \\(W\\) is \\([W]_{3\\times 1}\\):</p>
+    <p>\\[W = \\begin{bmatrix} w_1 \\\\ w_2 \\\\ w_3 \\end{bmatrix}\\]</p>
 
     <h3><strong>Inputs and Outputs</strong></h3>
-    <p>
-      Input X now is a matrix \( [X]{\scriptscriptstyle 4 \times 3} \). \(X_i\) is the \(i^{th}\) sample. So, we now have 4 examples \(X_1 \ldots X_4\) , each of which is vector with 3 components. \(x_{i}^{j}\) is \(j^{th}\) component of \(X_i\) sample. So
-    </p>
-    <p>X
-=
-[
-x
-1
-1
-x
-1
-2
-x
-1
-3
-x
-2
-1
-x
-2
-2
-x
-2
-3
-x
-3
-1
-x
-3
-2
-x
-3
-3
-x
-4
-1
-x
-4
-2
-x
-4
-3
-]</p><br>
-
-
-    <p>\(\vec{y}\) is a vector.</p>
-    <p>y
-=
-[
-y
-1
-y
-2
-y
-3
-y
-4
-]</p>
-<p>\(y_i\) = True label for \(i^{th}\) example.
-
-Likewise, \(\vec{\hat{y}}\) is a vector where
-
-\(\hat{y}_i\) = predicted label for \(i^{th}\) example. Value of \(\hat{y}_i\) is computed using \eqref{ref10}:
-
-$$ \hat{y}i = \frac{1}{1+e^{-(x{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)}} \label{ref10} \tag{0} $$</p>
-
-    <h3><strong>Loss</strong></h3>
-    <p>Like before, we will use half of squared error loss but in this case it is the total gap in all 4 predictions. Therefore,
-
-</p>
-    <p>
-      L
-=
-∑
-i
-=
-1
-4
-1
-2
-(
-y
-i
-−
-y
-^
-i
-)
-2
-    </p><br>
-
-    <h3><strong>Gradient</strong></h3>
-    <p>Let's compute gradients.</p>
-    <p>
-      (1)
-∇
-W
-L
-=
-∂
-L
-∂
-W
-∇
-W
-L
-=
-[
-∂
-L
-∂
-w
-1
-∂
-L
-∂
-w
-2
-∂
-L
-∂
-w
-3
-]
-    </p>
-
-    <p>First, lets compute only \( \frac{\partial L}{\partial w_{1}} \)</p>
-
-    <p>$$ \begin{align} \frac{\partial L}{\partial w_1} &= \frac{\partial (\sum\limits_{i=1}^{4} \frac{1}{2} (y_i - \hat{y}i)^{2})}{\partial w_1} \ & = \sum\limits{i=1}^{4} \frac{\partial (\frac{1}{2} (y_i - \hat{y}i)^{2})}{\partial w_1} \ & = \sum\limits{i=1}^{4} \frac{\partial (\frac{1}{2} (y_i - \hat{y}_i)^{2})}{\partial \hat{y}_i} \times \frac{\partial \hat{y}_i}{w_1} \label{ref12} \tag{2}\ \end{align} $$</p><br>
-    <p>
-      (3)
-∂
-(
-1
-2
-(
-y
-i
-−
-y
-^
-i
-)
-2
-)
-∂
-y
-^
-i
-=
-(
-−
-1
-)
-×
-(
-y
-i
-−
-y
-^
-i
-)
-    </p><br>
+    <p>Input \\(X\\) is now a matrix \\([X]_{4 \\times 3}\\). \\(X_i\\) represents the \\(i^{th}\\) training example, and \\(x_{i}^{j}\\) is the \\(j^{th}\\) feature of the \\(i^{th}\\) example.</p>
     
+    <p>\\[X = \\begin{bmatrix}
+    x_1^1 & x_1^2 & x_1^3 \\\\
+    x_2^1 & x_2^2 & x_2^3 \\\\
+    x_3^1 & x_3^2 & x_3^3 \\\\
+    x_4^1 & x_4^2 & x_4^3
+    \\end{bmatrix}\\]</p>
 
-    <p>$$ \begin{align} \frac{\partial \hat{y}i}{w_1} &= \sigma(x{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)(1 - \sigma(x_{i}^{1} \times w_1 + x_{i}^{2} \times w_2 + x_{i}^{3} \times w_3)) \times x_{i}^{1} \ & = \sigma( X_i . [W])(1 - \sigma( X_i . [W])) \times x_{i}^{1} \label{ref14} \tag{4}\ \end{align} $$
-    Using \eqref{ref13} and \eqref{ref14} in \eqref{ref12}, we get:
-
-$$ \begin{align} \frac{\partial L}{\partial w_1} = \sum\limits_{i=1}^{4} -(y_i - \hat{y}i) * [\sigma( X_i . [W])(1 - \sigma( X_i . [W])) \times x{i}^{1}] \label{ref15} \tag{5}\ \end{align} $$
-
-$$ \frac{\partial L}{\partial w_1} = -(y_1 - \hat{y}1) * [\sigma( X_1 . [W])(1 - \sigma( X_1 . [W])) \times x{1}^{1}] + \</p><br>
-    <p>
-      ~~~~~~~~~~~~			-(y_3 - \hat{y}_3) * [\sigma( X_3 . [W])(1 - \sigma(X_3 . [W])) \times x_{3}^{1}] + \\
-~~~~~~~~~~			-(y_4 - \hat{y}_4) * [\sigma( X_4 . [W])(1 - \sigma(X_4 . [W])) \times x_{4}^{1}] \\
-$$
-
-$$
-\frac{\partial L}{\partial w_1}  = (\hat{y}_1 - y_1) * [\sigma( X_1 . [W])(1 - \sigma( X_1 . [W])) \times x_{1}^{1}] + \\
-~~~~~~~~~~~~        (\hat{y}_2 - y_2) * [\sigma( X_2 . [W])(1 - \sigma(X_2 . [W])) \times x_{2}^{1}] + \\
-~~~~~~~~~~~~            (\hat{y}_3 - y_3) * [\sigma( X_3 . [W])(1 - \sigma(X_3 . [W])) \times x_{3}^{1}] + \\
-~~~~~~~~~~          (\hat{y}_4 - y_4) * [\sigma( X_4 . [W])(1 - \sigma(X_4 . [W])) \times x_{4}^{1}] \\
-\label{ref16} \tag{6}\\
-$$
-
-Let, 
-$$
- \Delta l_{1}^{i} = ((\hat{y}_i - y_i) *  [\sigma( X_i . [W])(1 - \sigma( X_i . [W]))] ~~~~~~\qquad\forall i \in (1,4) \label{ref17} \tag{7}\\
-$$
-
-Using \eqref{ref17} in \eqref{ref16}, we get:  
-$$
-\begin{align}
-\frac{\partial L}{\partial w_1} =  \Delta l_{1}^{1} \times x_{1}^{1} + \Delta l_{1}^{2} \times x_{2}^{1} + \Delta l_{1}^{3} \times x_{3}^{1} + \Delta l_{1}^{4} \times x_{4}^{1} \label{ref18} \tag{8}\\
-\end{align}
-$$
-
-Likewise, we get:
-
-$$
-\begin{align}
-\frac{\partial L}{\partial w_2} &= \Delta l_{1}^{1} \times x_{1}^{2} + \Delta l_{1}^{2} \times x_{2}^{2} + \Delta l_{1}^{3} \times x_{3}^{2} + \Delta l_{1}^{4} \times x_{4}^{2} \label{ref19} \tag{9}\\
-\end{align}
-$$
-
-$$
-\begin{align}
-\frac{\partial L}{\partial w_3} &= \Delta l_{1}^{1} \times x_{1}^{3} + \Delta l_{1}^{2} \times x_{2}^{3} + \Delta l_{1}^{3} \times x_{3}^{3} + \Delta l_{1}^{4} \times x_{4}^{3} \label{ref20} \tag{10}\\
-\end{align}
-$$
-
-Using \eqref{ref18}, \eqref{ref19} and \eqref{ref20} in \eqref{ref11}, we get: 
-
-$$
-\begin{equation}
-\frac{\partial L}{\partial W} = \begin{bmatrix}
-     \Delta l_{1}^{1} \times x_{1}^{1} + \Delta l_{1}^{2} \times x_{2}^{1} + \Delta l_{1}^{3} \times x_{3}^{1} + \Delta l_{1}^{4} \times x_{4}^{1} \\
-     \Delta l_{1}^{1} \times x_{1}^{2} + \Delta l_{1}^{2} \times x_{2}^{2} + \Delta l_{1}^{3} \times x_{3}^{2} + \Delta l_{1}^{4} \times x_{4}^{2} \\
-     \Delta l_{1}^{1} \times x_{1}^{3} + \Delta l_{1}^{2} \times x_{2}^{3} + \Delta l_{1}^{3} \times x_{3}^{3} + \Delta l_{1}^{4} \times x_{4}^{3} \\
-     \end{bmatrix}
-\label{ref21} \tag{11}
-\end{equation} 
-$$
-
-Simplifying: 
-
-$$
-\frac{\partial L}{\partial W} = \begin{bmatrix} x_{1}^{1} & x_{2}^{1} & x_{3}^{1} & x_{4}^{1} \\ x_{1}^{2} & x_{2}^{2} & x_{3}^{2} & x_{4}^{2} \\ x_{1}^{3} & x_{2}^{3} & x_{3}^{3} & x_{4}^{3} \end{bmatrix} . \left[ \begin{array}{c} \Delta l_{1}^{1} \\\Delta l_{1}^{2} \\\Delta l_{1}^{3} \\\Delta l_{1}^{4} \end{array} \right] 
-$$
-
-$$
-\frac{\partial L}{\partial W} = \begin{bmatrix} x_{1}^{1} & x_{2}^{1} & x_{3}^{1} & x_{4}^{1} \\ x_{1}^{2} & x_{2}^{2} & x_{3}^{2} & x_{4}^{2} \\ x_{1}^{3} & x_{2}^{3} & x_{3}^{3} & x_{4}^{3} \end{bmatrix} . \left[ \begin{array}{c} \Delta l_{1}  \end{array} \right] 
-$$
-
-$$ 
-\begin{align}
-\frac{\partial L}{\partial W} &= [X^{T}] . \Delta l_{1} \\
-\end{align}
-$$
+    <p>The true labels vector \\(\\vec{y}\\) is:</p>
+    <p>\\[\\vec{y} = \\begin{bmatrix} y_1 \\\\ y_2 \\\\ y_3 \\\\ y_4 \\end{bmatrix}\\]</p>
     
-    </p>
+    <p>where \\(y_i\\) is the true label for the \\(i^{th}\\) training example.</p>
+
+    <p>The predicted outputs vector \\(\\vec{\\hat{y}}\\) has components \\(\\hat{y}_i\\) computed as:</p>
+    <p>\\[\\hat{y}_i = \\sigma(x_{i}^{1} w_1 + x_{i}^{2} w_2 + x_{i}^{3} w_3) = \\frac{1}{1+e^{-(x_{i}^{1} w_1 + x_{i}^{2} w_2 + x_{i}^{3} w_3)}} \\tag{1}\\]</p>
+
+    <h3><strong>Loss Function</strong></h3>
+    <p>We use the sum of squared errors across all training examples:</p>
+    <p>\\[L = \\sum_{i=1}^{4} \\frac{1}{2}(y_i - \\hat{y}_i)^2 \\tag{2}\\]</p>
+
+    <h3><strong>Gradient Computation</strong></h3>
+    <p>The gradient of the loss with respect to the weight matrix is:</p>
+    <p>\\[\\nabla_W L = \\frac{\\partial L}{\\partial W} = \\begin{bmatrix}
+    \\frac{\\partial L}{\\partial w_1} \\\\
+    \\frac{\\partial L}{\\partial w_2} \\\\
+    \\frac{\\partial L}{\\partial w_3}
+    \\end{bmatrix} \\tag{3}\\]</p>
+
+    <h4><strong>Computing \\(\\frac{\\partial L}{\\partial w_1}\\)</strong></h4>
+    <p>Using the chain rule:</p>
+    <p>\\[\\begin{align}
+    \\frac{\\partial L}{\\partial w_1} &= \\frac{\\partial}{\\partial w_1} \\left(\\sum_{i=1}^{4} \\frac{1}{2}(y_i - \\hat{y}_i)^2\\right) \\\\
+    &= \\sum_{i=1}^{4} \\frac{\\partial}{\\partial w_1} \\left(\\frac{1}{2}(y_i - \\hat{y}_i)^2\\right) \\\\
+    &= \\sum_{i=1}^{4} \\frac{\\partial L_i}{\\partial \\hat{y}_i} \\cdot \\frac{\\partial \\hat{y}_i}{\\partial w_1} \\tag{4}
+    \\end{align}\\]</p>
+
+    <p>where \\(L_i = \\frac{1}{2}(y_i - \\hat{y}_i)^2\\) is the loss for the \\(i^{th}\\) example.</p>
+
+    <h4><strong>Computing the partial derivatives</strong></h4>
+    <p>First component - derivative of loss with respect to prediction:</p>
+    <p>\\[\\frac{\\partial L_i}{\\partial \\hat{y}_i} = \\frac{\\partial}{\\partial \\hat{y}_i}\\left(\\frac{1}{2}(y_i - \\hat{y}_i)^2\\right) = -(y_i - \\hat{y}_i) = (\\hat{y}_i - y_i) \\tag{5}\\]</p>
+
+    <p>Second component - derivative of sigmoid with respect to weight:</p>
+    <p>\\[\\begin{align}
+    \\frac{\\partial \\hat{y}_i}{\\partial w_1} &= \\frac{\\partial}{\\partial w_1}\\left(\\frac{1}{1+e^{-(x_{i}^{1} w_1 + x_{i}^{2} w_2 + x_{i}^{3} w_3)}}\\right) \\\\
+    &= \\sigma(z_i) \\cdot (1 - \\sigma(z_i)) \\cdot x_{i}^{1} \\\\
+    &= \\hat{y}_i \\cdot (1 - \\hat{y}_i) \\cdot x_{i}^{1} \\tag{6}
+    \\end{align}\\]</p>
+    
+    <p>where \\(z_i = x_{i}^{1} w_1 + x_{i}^{2} w_2 + x_{i}^{3} w_3\\)</p>
+
+    <h4><strong>Combining the results</strong></h4>
+    <p>Substituting equations (5) and (6) into equation (4):</p>
+    <p>\\[\\frac{\\partial L}{\\partial w_1} = \\sum_{i=1}^{4} (\\hat{y}_i - y_i) \\cdot \\hat{y}_i \\cdot (1 - \\hat{y}_i) \\cdot x_{i}^{1} \\tag{7}\\]</p>
+
+    <p>Let's define the error term for each example:</p>
+    <p>\\[\\delta_i = (\\hat{y}_i - y_i) \\cdot \\hat{y}_i \\cdot (1 - \\hat{y}_i) \\tag{8}\\]</p>
+
+    <p>Then:</p>
+    <p>\\[\\frac{\\partial L}{\\partial w_1} = \\sum_{i=1}^{4} \\delta_i \\cdot x_{i}^{1} = \\delta_1 x_1^1 + \\delta_2 x_2^1 + \\delta_3 x_3^1 + \\delta_4 x_4^1 \\tag{9}\\]</p>
+
+    <h4><strong>General form for all weights</strong></h4>
+    <p>Similarly, for the other weights:</p>
+    <p>\\[\\frac{\\partial L}{\\partial w_2} = \\sum_{i=1}^{4} \\delta_i \\cdot x_{i}^{2} = \\delta_1 x_1^2 + \\delta_2 x_2^2 + \\delta_3 x_3^2 + \\delta_4 x_4^2 \\tag{10}\\]</p>
+    
+    <p>\\[\\frac{\\partial L}{\\partial w_3} = \\sum_{i=1}^{4} \\delta_i \\cdot x_{i}^{3} = \\delta_1 x_1^3 + \\delta_2 x_2^3 + \\delta_3 x_3^3 + \\delta_4 x_4^3 \\tag{11}\\]</p>
+
+    <h4><strong>Matrix form</strong></h4>
+    <p>The complete gradient can be written as:</p>
+    <p>\\[\\frac{\\partial L}{\\partial W} = \\begin{bmatrix}
+    \\delta_1 x_1^1 + \\delta_2 x_2^1 + \\delta_3 x_3^1 + \\delta_4 x_4^1 \\\\
+    \\delta_1 x_1^2 + \\delta_2 x_2^2 + \\delta_3 x_3^2 + \\delta_4 x_4^2 \\\\
+    \\delta_1 x_1^3 + \\delta_2 x_2^3 + \\delta_3 x_3^3 + \\delta_4 x_4^3
+    \\end{bmatrix} \\tag{12}\\]</p>
+
+    <p>This can be expressed as a matrix multiplication:</p>
+    <p>\\[\\frac{\\partial L}{\\partial W} = \\begin{bmatrix}
+    x_1^1 & x_2^1 & x_3^1 & x_4^1 \\\\
+    x_1^2 & x_2^2 & x_3^2 & x_4^2 \\\\
+    x_1^3 & x_2^3 & x_3^3 & x_4^3
+    \\end{bmatrix} \\begin{bmatrix}
+    \\delta_1 \\\\
+    \\delta_2 \\\\
+    \\delta_3 \\\\
+    \\delta_4
+    \\end{bmatrix} \\tag{13}\\]</p>
+
+    <p><strong>Final Result:</strong></p>
+    <p>\\[\\boxed{\\frac{\\partial L}{\\partial W} = X^T \\boldsymbol{\\delta}} \\tag{14}\\]</p>
+    
+    <p>where \\(\\boldsymbol{\\delta} = [\\delta_1, \\delta_2, \\delta_3, \\delta_4]^T\\) is the vector of error terms.</p>
+
+    <h4><strong>Summary</strong></h4>
+    <p>For batch training with multiple examples:</p>
+    <ol>
+      <li>Compute predictions: \\(\\hat{y}_i = \\sigma(X_i \\cdot W)\\) for each example</li>
+      <li>Compute error terms: \\(\\delta_i = (\\hat{y}_i - y_i) \\cdot \\hat{y}_i \\cdot (1 - \\hat{y}_i)\\)</li>
+      <li>Compute gradient: \\(\\frac{\\partial L}{\\partial W} = X^T \\boldsymbol{\\delta}\\)</li>
+    </ol>
 
     <br/>
-    <p>In the <a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" target="_blank" style="color: blue;">next post</a> we’ll explore gradients for networks with hidden layers.</p>
+    <p>In the <a href="https://anujgupta82.github.io/2016/09/11/gradients-4-2/" target="_blank" style="color: blue;">next post</a> we'll explore gradients for networks with hidden layers.</p>
 
     <p>
       <a href="https://anujgupta82.github.io/2016/08/28/gradients-2/" target="_blank" style="color: blue;">Prev</a> |
       <a href="https://anujgupta82.github.io/2016/09/04/gradients-4-1/" target="_blank" style="color: blue;">Next</a>
     </p>
-      `
-    },
+  `
+},
     {
       id: 5,
       title: "Gradients - Part 4a",
