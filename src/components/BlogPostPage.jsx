@@ -4,8 +4,8 @@ import BlogModal from "./BlogModal"; // Import BlogModal component
 import BlogViewer from "../components/BlogViewer";
 import NN_2_2 from "../assets/gradients/NN_2_2.jpeg";
 import NN_4_1 from "../assets/gradients/NN_4_1.jpeg";
-import NN_4_2 from "../assets/gradients/NN_4_2";
-import NN_generic from "../assets/gradients/NN_generic";
+import NN_4_2 from "../assets/gradients/NN_4_2.jpeg";
+import NN_generic from "../assets/gradients/NN_generic.jpeg";
 
 
 function BlogPostPage() {
@@ -967,7 +967,7 @@ function BlogPostPage() {
     <div style="background-color: #2d3748; color: #e2e8f0; padding: 20px; margin: 20px 0; border-radius: 5px; font-family: 'Courier New', monospace;">
       <pre><code>import numpy as np
 
-# Training data
+# Training data of x and y
 X = np.array([[0,0,1]])  # Input (1x3)
 y = np.array([[0]])      # Target output (1x1)
 
@@ -978,7 +978,7 @@ alpha = 0.5              # Learning rate
 W_1 = np.random.random((3,2))  # Input to hidden (3x2)
 W_2 = np.random.random((2,1))  # Hidden to output (2x1)
 
-# Training loop
+# Training loop 
 for i in range(1000):
     
     # Forward pass
@@ -1009,7 +1009,9 @@ print("Target:", y[0][0])
     <br/>
     <p><a href="https://anujgupta82.github.io/2016/09/09/gradients-4-1/" target="_blank" style="color: blue;">Prev</a></p>
   `
-},{
+},
+
+{
   id: 7,
   title: "Gradients - summary",
   date: "Sep 13, 2016",
