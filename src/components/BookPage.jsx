@@ -93,7 +93,7 @@ function BookPage() {
     },
     {
       name: "Walmart",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/1024px-Walmart_logo.svg.png",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Walmart_logo_%282008%29.svg/2560px-Walmart_logo_%282008%29.svg.png",
       url: "https://www.walmart.com/",
       brandColor: "#0071CE",
     },
@@ -105,7 +105,7 @@ function BookPage() {
     },
     {
       name: "KPMG",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/KPMG_logo.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/KPMG_blue_logo.svg/2560px-KPMG_blue_logo.svg.png",
       url: "https://home.kpmg/",
       brandColor: "#00338D",
     },
