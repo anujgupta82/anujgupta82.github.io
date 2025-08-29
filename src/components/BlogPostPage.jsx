@@ -1018,7 +1018,7 @@ print("Target:", y[0][0])
   excerpt: "Take home on Computing Gradients that go into training Neural Nets",
   content: `
     <h2><strong>Generalization</strong></h2>
-    <p>In this post, based on our conclusions in last post, we will try and generalise a strategy to compute gradients for arbitrary networks, as shown in figure below:</p>
+    <p>In this post, based on our conclusions in the last post, we will try and generalise a strategy to compute gradients for arbitrary networks, as shown in figure below:</p>
     <img src="${NN_generic}" height="200" width="270" alt="Neural Network"/>
     <p><em>Simple neural net</em></p>
     <p>Imagine we have a (Feed forward) network with 1 input layer \\(L_0\\), 1 output layer \\(L_3\\) and 2 hidden layers \\(L_1\\), \\(L_2\\) respectively. Further, let \\(l_i\\) be output of layer \\(L_i\\). Also, by design, \\(l_0 = X\\) [input] and \\(l_3 = \\hat{y}\\) [output]. Let \\(W_{ij}\\) be weights between layers \\(L_i\\) and \\(L_j\\). We have 3 weight matrices - \\(W_{01}\\), \\(W_{12}\\) and \\(W_{23}\\).</p>

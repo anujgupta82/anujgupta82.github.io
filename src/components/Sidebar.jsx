@@ -1,8 +1,9 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake, FaGraduationCap } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiSubstack } from 'react-icons/si';
 import Anujgupta from "../assets/images/Anuj_formal_high_res.png"
+import GoogleScholar from "../assets/icon/scholar.png"
 
 function Sidebar() {
   return (
@@ -74,24 +75,27 @@ function Sidebar() {
             >
                 <FaXTwitter className="w-7 h-7" />
             </a>
-            <a href="https://github.com/anujgupta82"
+            <a href="https://scholar.google.co.in/citations?user=ljogLikAAAAJ&hl=en" 
+               className="text-[#4285F4] hover:text-[#1a73e8] transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Google Scholar"
+            >
+                 <img src={GoogleScholar} alt="Google Scholar" className="w-7 h-7 object-contain" />
+            </a>
+
+
+
+          </div>
+          
+          <div className="flex space-x-5">
+             <a href="https://github.com/anujgupta82"
                className="text-[#333] hover:text-black transition-colors duration-300"
                target="_blank"
                rel="noopener noreferrer"
                aria-label="GitHub"
             >
                 <FaGithub className="w-7 h-7" />
-            </a>
-          </div>
-          
-          <div className="flex space-x-5">
-            <a href="https://gradient-advisors.ai/"
-               className="text-[#6e45e2] hover:text-[#4d2bb8] transition-colors duration-300"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Gradient Advisors"
-            >
-                <FaGlobe className="w-7 h-7" />
             </a>
             <a href="https://pragmaticai1.substack.com/"
                className="text-[#FF6719] hover:text-[#e05a14] transition-colors duration-300"
@@ -100,6 +104,14 @@ function Sidebar() {
                aria-label="Substack"
             >
                 <SiSubstack className="w-7 h-7" />
+            </a>
+            <a href="https://gradient-advisors.ai/"
+               className="text-[#6e45e2] hover:text-[#4d2bb8] transition-colors duration-300"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Gradient Advisors"
+            >
+                <FaGlobe className="w-7 h-7" />
             </a>
           </div>
         </div>
