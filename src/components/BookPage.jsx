@@ -6,6 +6,8 @@ import {
   faBook,
   faChevronLeft,
   faChevronRight,
+  faChevronDown,
+  faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -15,44 +17,43 @@ import pnlppolish from "../assets/images/pnlppolish.jpg";
 import pnlpjapanese from "../assets/images/pnlpjapanese.jpg";
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake } from 'react-icons/fa';
+
 // Placeholder book covers with consistent aspect ratios
 const bookCovers = [
   { id: 1, src: PNLPbook, alt: "PNLP Book Cover" },
   { id: 2, src: pnlpjapanese, alt: "Japanese simplified translation" },
   { id: 3, src: pnlpchinese, alt: "Chinese Complex Translation" },
   { id: 4, src: pnlppolish, alt: "Polish simplified translation" },
-  
 ];
 
 function BookPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-    // const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isCompaniesExpanded, setIsCompaniesExpanded] = useState(false);
 
   useEffect(() => {
     let interval;
-    // if (isAutoPlaying) {
     interval = setInterval(() => {
       setCurrentSlide((prev) =>
         prev === bookCovers.length - 1 ? 0 : prev + 1
       );
     }, 5000);
-    // }
     return () => clearInterval(interval);
   }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev === bookCovers.length - 1 ? 0 : prev + 1));
-    // setIsAutoPlaying(false)
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? bookCovers.length - 1 : prev - 1));
-    // setIsAutoPlaying(false)
   };
 
   const goToSlide = (index) => {
     setCurrentSlide(index);
-    // setIsAutoPlaying(false)
+  };
+
+  const toggleCompanies = () => {
+    setIsCompaniesExpanded(!isCompaniesExpanded);
   };
 
   const NameLink = ({ href, children }) => (
@@ -350,7 +351,7 @@ function BookPage() {
                     </NameLink> (Lead Applied Scientist, Amazon),{" "}
                     <NameLink href="https://www.linkedin.com/in/e10is/">
                       Edouard Harris
-                    </NameLink> (Co-founder @Gladstone AI, YC’18)
+                    </NameLink> (Co-founder @Gladstone AI, YC'18)
                     .
                   </p>
                   <p className="text-gray-600">
@@ -365,7 +366,7 @@ function BookPage() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap justify-center gap-4 pt-4"> {/* Center align */}
+                <div className="flex flex-wrap justify-center gap-4 pt-4">
                   <a
                     title="O'Reilly"
                     target="_blank"
@@ -395,64 +396,96 @@ function BookPage() {
             </div>
           </div>
 
-          {/* Companies Section */}
-          <div className="p-8 border-t border-gray-100 bg-gradient-to-br from-gray-50 to-slate-100 lg:p-12">
-            <h3 className="mb-8 text-2xl font-bold text-center text-gray-900">
-              Trusted by Professionals at Leading Companies
-            </h3>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
-              {companies.map((company, index) => (
-                <div key={index} className="relative group">
-                  <a
-                    href={company.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative block overflow-hidden"
-                  >
-                    <div className="flex items-center justify-center h-24 px-4 py-3 transition-all duration-300 bg-transparent rounded-xl group-hover:-translate-y-1">
-                      <div 
-                        className="flex items-center justify-center" 
-                        style={{
-                          width: "140px",
-                          height: "50px",
-                          position: "relative"
-                        }}
-                      >
-                        <img
-                          src={company.logo}
-                          title={company.name}
-                          alt={`${company.name} logo`}
-                          style={{
-                            transition: "all 0.3s ease",
-                            backgroundColor: "transparent",
-                            maxWidth: "100%",
-                            maxHeight: "100%",
-                            width: "auto",
-                            height: "auto",
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            objectFit: "contain"
-                          }}
-                          className="transition-all duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              ))}
+          {/* Companies Section with Collapsible Design */}
+          <div className="border-t border-gray-100 bg-gradient-to-br from-gray-50 to-slate-100">
+            {/* Header with Toggle Button */}
+            <div className="p-8 lg:p-12">
+              <div className="flex items-center justify-center">
+                <h3 className="text-2xl font-bold text-gray-900 mr-4">
+                  Trusted by Professionals at Leading Companies
+                </h3>
+                <button
+                  onClick={toggleCompanies}
+                  className="group flex items-center justify-center w-10 h-10 bg-white border-2 border-gray-300 rounded-full shadow-md hover:shadow-lg hover:border-blue-500 transition-all duration-300 transform hover:scale-110"
+                  aria-label={isCompaniesExpanded ? "Hide companies" : "Show companies"}
+                >
+                  <FontAwesomeIcon
+                    icon={isCompaniesExpanded ? faChevronUp : faChevronDown}
+                    className={`text-gray-600 group-hover:text-blue-600 transition-all duration-300 ${
+                      isCompaniesExpanded ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+              </div>
             </div>
 
-            {/* Additional Professional Touch */}
-            <div className="mt-8 text-center">
-              <p className="text-sm font-medium text-gray-600">
-                Join thousands of professionals who trust our expertise
-              </p>
+            {/* Collapsible Companies Grid */}
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              isCompaniesExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+              <div className="px-8 pb-8 lg:px-12 lg:pb-12">
+                <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+                  {companies.map((company, index) => (
+                    <div 
+                      key={index} 
+                      className={`relative group transition-all duration-300 ${
+                        isCompaniesExpanded ? 'animate-fadeIn' : ''
+                      }`}
+                      style={{
+                        animationDelay: isCompaniesExpanded ? `${index * 50}ms` : '0ms'
+                      }}
+                    >
+                      <a
+                        href={company.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative block overflow-hidden"
+                      >
+                        <div className="flex items-center justify-center h-24 px-4 py-3 transition-all duration-300 bg-transparent rounded-xl group-hover:-translate-y-1">
+                          <div 
+                            className="flex items-center justify-center" 
+                            style={{
+                              width: "140px",
+                              height: "50px",
+                              position: "relative"
+                            }}
+                          >
+                            <img
+                              src={company.logo}
+                              title={company.name}
+                              alt={`${company.name} logo`}
+                              style={{
+                                transition: "all 0.3s ease",
+                                backgroundColor: "transparent",
+                                maxWidth: "100%",
+                                maxHeight: "100%",
+                                width: "auto",
+                                height: "auto",
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                objectFit: "contain"
+                              }}
+                              className="transition-all duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Additional Professional Touch */}
+                <div className="mt-8 text-center">
+                  <p className="text-sm font-medium text-gray-600">
+                    Join thousands of professionals who trust our expertise
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Upcoming Book Section */}
           {/* Upcoming Book Section */}
           <div className="border-t-2">
             <div className="w-full p-6 border-l-4 border-indigo-600 rounded-lg shadow-sm bg-gradient-to-br from-gray-100 to-indigo-100">
@@ -460,7 +493,7 @@ function BookPage() {
                 📘 Coming Soon
               </h3>
               <p className="mb-2 text-base text-gray-800">
-                I’m currently writing my second book titled{" "}
+                I'm currently writing my second book titled{" "}
                 <strong className="text-indigo-700">
                   "AI First by Design"
                 </strong>
@@ -489,6 +522,23 @@ function BookPage() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 }
