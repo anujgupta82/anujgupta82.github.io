@@ -300,27 +300,28 @@ function BookPage() {
               </div>
             </div>
 
-            {/* Content Section */}
+            
             <div className="p-8 lg:w-3/5 xl:w-2/3 lg:p-12">
               <div className="space-y-6">
                 {/* Book Description */}
                 <div>
-                  <ul className="list-disc list-inside text-lg leading-relaxed text-gray-700 space-y-2">
-                    <span className="font-bold block mb-2">The Book:</span>
-                    <li>
-                      Brings a practical lens to building AI models & systems in startups and product teams as opposed to academia or research labs.
-                    </li>
-                    <li>
-                      Translated into multiple languages including English, Polish, Chinese, and Japanese.
-                    </li>
-                    <li> 
-                      Cited 300+ times; starred 1350+ times on GitHub.
-                    </li>
-                    <li>
-                      Adopted by 50+ Universities worldwide as part of their AI curriculum.
-                    </li>
-                  </ul>
-                </div>
+                 
+      <ul className="list-disc text-lg leading-relaxed text-gray-700 space-y-2 ml-6">
+        <span className="font-bold block mb-2">The Book:</span>
+        <li className="pl-2" style={{textIndent: '-0.1rem'}}>
+          Brings a practical lens to building AI models & systems in startups and product teams as opposed to academia or research labs.
+        </li>
+        <li className="pl-2" style={{textIndent: '-0.1rem'}}>
+          Translated into multiple languages including English, Polish, Chinese, and Japanese.
+        </li>
+        <li className="pl-2" style={{textIndent: '-0.1rem'}}> 
+          Cited 300+ times; starred 1350+ times on GitHub.
+        </li>
+        <li className="pl-2" style={{textIndent: '-0.1rem'}}>
+          Adopted by 50+ Universities worldwide as part of their AI curriculum.
+        </li>
+      </ul>
+                </div> 
 
                 {/* Endorsements */}
                 <div className="space-y-3">
