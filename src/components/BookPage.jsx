@@ -17,6 +17,7 @@ import pnlppolish from "../assets/images/pnlppolish.jpg";
 import pnlpjapanese from "../assets/images/pnlpjapanese.jpg";
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake } from 'react-icons/fa';
+import rg from "../assets/icon/rgmu.png";
 
 // Placeholder book covers with consistent aspect ratios
 const bookCovers = [
@@ -29,6 +30,7 @@ const bookCovers = [
 function BookPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isCompaniesExpanded, setIsCompaniesExpanded] = useState(false);
+  const [isUniversitiesExpanded, setIsUniversitiesExpanded] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -54,6 +56,10 @@ function BookPage() {
 
   const toggleCompanies = () => {
     setIsCompaniesExpanded(!isCompaniesExpanded);
+  };
+
+  const toggleUniversities = () => {
+    setIsUniversitiesExpanded(!isUniversitiesExpanded);
   };
 
   const NameLink = ({ href, children }) => (
@@ -188,6 +194,127 @@ function BookPage() {
     }
   ];
 
+  const universities = [
+    {
+      name: "Eberhard Karls University of Tuebingen",
+      logo: "https://uni-tuebingen.de/_assets/7d66ab3e4599366251c5af46f0e770b9/Images/Logo_Universitaet_Tuebingen.svg",
+      url: "https://uni-tuebingen.de/",
+      brandColor: "#8C1515",
+    },
+    {
+      name: "Plaksha University",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/7/76/Plaksha_Logo.png",
+      url: "https://plaksha.edu.in/",
+      brandColor: "#A31F34",
+    },
+    {
+      name: "Ludwig Maximilian University",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/LMU_Muenchen_Logo.svg/2560px-LMU_Muenchen_Logo.svg.png",
+      url: "https://www.lmu.de/en/",
+      brandColor: "#C41E3A",
+    },
+    {
+      name: "University of California, Berkeley",
+      logo: "https://www.berkeley.edu/wp-content/themes/berkeleygateway/img/logo-berkeley.svg?v=3",
+      url: "https://www.berkeley.edu/",
+      brandColor: "#003262",
+    },
+    {
+      name: "National Taiwan Normal University",
+      logo: "https://upload.wikimedia.org/wikipedia/en/c/c3/National_Taiwan_Normal_University_logo.svg",
+      url: "https://en.ntnu.edu.tw/",
+      brandColor: "#A51C30",
+    },
+    {
+      name: "University of Vienna",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e9/2880px_University_of_Vienna_Logo.png",
+      url: "https://www.univie.ac.at/en/",
+      brandColor: "#4B2E83",
+    },
+    {
+      name: "Marymount University",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Marymount_univ_textlogo.svg",
+      url: "https://marymount.edu/",
+      brandColor: "#B3A369",
+    },
+    {
+      name: "University North Texas",
+      logo: "https://webassets.unt.edu/assets/branding/unt-stacked-logo.svg",
+      url: "https://www.unt.edu/",
+      brandColor: "#002654",
+    },
+    {
+      name: "IIIT-Delhi",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/IIIT-Delhi_Insignia.svg",
+      url: "https://www.iiitd.ac.in",
+      brandColor: "#002147",
+    },
+    {
+      name: "Institute of Computing - State University of Campinas",
+      logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/UNICAMP_logo.svg/1932px-UNICAMP_logo.svg.png",
+      url: "https://ic.unicamp.br/en/",
+      brandColor: "#1F407A",
+    },
+  {
+    name: "University of Gothenburg",
+    logo: "https://upload.wikimedia.org/wikipedia/en/a/a6/Goteborgs_universitet_seal.svg",
+    url: "https://www.gu.se/en",
+    brandColor: "#A3C1AD"
+  },
+    {
+      name: "University of Utah",
+      logo: "https://upload.wikimedia.org/wikipedia/en/4/4a/University_of_Utah_seal.svg",
+      url: "https://www.utah.edu",
+      brandColor: "#003D7A",
+    },
+    {
+      name: "University of Illinois",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Illinois_Block_I.png",
+      url: "https://illinois.edu/",
+      brandColor: "#13294B",
+    },
+    {
+      name: "Babeş-Bolyai University",
+      logo: "https://www.ubbcluj.ro/img/Logo-UBB.svg",
+      url: "https://www.ubbcluj.ro/en/",
+      brandColor: "#0065BD",
+    },
+    {
+      name: "National Taipei University",
+      logo: "https://www-en.ntut.edu.tw/var/file/6/1006/img/1776/logo_color.svg",
+      url: "https://english.ntpu.edu.tw/",
+      brandColor: "#003865",
+    },
+    {
+      name: "IIT Kanpur",
+      logo: "https://upload.wikimedia.org/wikipedia/en/a/a3/IIT_Kanpur_Logo.svg",
+      url: "https://www.iitk.ac.in//",
+      brandColor: "#FF6900",
+    },{
+      name: "IIT KGP",
+      logo: "https://upload.wikimedia.org/wikipedia/en/1/1c/IIT_Kharagpur_Logo.svg",
+      url: "https://www.iitkgp.ac.in/",
+      brandColor: "#FF6900",
+    },{
+      name: "University of Texas at El Paso (UTEP)",
+      logo: "https://upload.wikimedia.org/wikipedia/en/c/c8/University_of_Texas_at_El_Paso_seal.svg",
+      url: "https://www.utep.edu/",
+      brandColor: "#FF6900",
+    },
+    {
+      name: "ST. JOSEPH’S COLLEGE",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Saint_Joseph_College_Seminary_Logo.png",
+      url: "https://www.sjc.ac.in/",
+      brandColor: "#FF6900",
+    },
+     {
+      name: "RAJEEV GANDHI MEMORIAL COLLEGE OF ENGINEERING AND TECHNOLOGY",
+      logo: rg,
+      url: "https://www.rgmcet.edu.in/",
+      brandColor: "#FF6900",
+     }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br to-blue-50 from-slate-50">
       <div className="max-w-5xl px-4 py-8 mx-auto sm:px-6 lg:px-8">
@@ -300,13 +427,12 @@ function BookPage() {
               </div>
             </div>
 
-            
+            {/* Content Section */}
             <div className="p-8 lg:w-3/5 xl:w-2/3 lg:p-12">
               <div className="space-y-6">
                 {/* Book Description */}
                 <div>
-                 
-      <ul className="list-disc text-lg leading-relaxed text-gray-700 space-y-2 ml-6">
+                      <ul className="list-disc text-lg leading-relaxed text-gray-700 space-y-2 ml-6">
         <span className="font-bold block mb-2">The Book:</span>
         <li className="pl-2" style={{textIndent: '-0.1rem'}}>
           Brings a practical lens to building AI models & systems in startups and product teams as opposed to academia or research labs.
@@ -321,7 +447,7 @@ function BookPage() {
           Adopted by 50+ Universities worldwide as part of their AI curriculum.
         </li>
       </ul>
-                </div> 
+                </div>
 
                 {/* Endorsements */}
                 <div className="space-y-3">
@@ -481,6 +607,96 @@ function BookPage() {
                 <div className="mt-8 text-center">
                   <p className="text-sm font-medium text-gray-600">
                     Join thousands of professionals who trust our expertise
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Universities Section with Collapsible Design */}
+          <div className="border-t border-gray-100 bg-gradient-to-br from-blue-50 to-indigo-50">
+            {/* Header with Toggle Button */}
+            <div className="p-8 lg:p-12">
+              <div className="flex items-center justify-center">
+                <h3 className="text-2xl font-bold text-gray-900 mr-4">
+                  Used by Universities globally for their AI curriculum
+                </h3>
+                <button
+                  onClick={toggleUniversities}
+                  className="group flex items-center justify-center w-10 h-10 bg-white border-2 border-gray-300 rounded-full shadow-md hover:shadow-lg hover:border-indigo-500 transition-all duration-300 transform hover:scale-110"
+                  aria-label={isUniversitiesExpanded ? "Hide universities" : "Show universities"}
+                >
+                  <FontAwesomeIcon
+                    icon={isUniversitiesExpanded ? faChevronUp : faChevronDown}
+                    className={`text-gray-600 group-hover:text-indigo-600 transition-all duration-300 ${
+                      isUniversitiesExpanded ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Collapsible Universities Grid */}
+            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              isUniversitiesExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}>
+              <div className="px-8 pb-8 lg:px-12 lg:pb-12">
+                <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
+                  {universities.map((university, index) => (
+                    <div 
+                      key={index} 
+                      className={`relative group transition-all duration-300 ${
+                        isUniversitiesExpanded ? 'animate-fadeIn' : ''
+                      }`}
+                      style={{
+                        animationDelay: isUniversitiesExpanded ? `${index * 50}ms` : '0ms'
+                      }}
+                    >
+                      <a
+                        href={university.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative block overflow-hidden"
+                      >
+                        <div className="flex items-center justify-center h-24 px-4 py-3 transition-all duration-300 bg-transparent rounded-xl group-hover:-translate-y-1">
+                          <div 
+                            className="flex items-center justify-center" 
+                            style={{
+                              width: "140px",
+                              height: "50px",
+                              position: "relative"
+                            }}
+                          >
+                            <img
+                              src={university.logo}
+                              title={university.name}
+                              alt={`${university.name} logo`}
+                              style={{
+                                transition: "all 0.3s ease",
+                                backgroundColor: "transparent",
+                                maxWidth: "100%",
+                                maxHeight: "100%",
+                                width: "auto",
+                                height: "auto",
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                objectFit: "contain"
+                              }}
+                              className="transition-all duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Additional Academic Touch */}
+                <div className="mt-8 text-center">
+                  <p className="text-sm font-medium text-gray-600">
+                    Part of AI curriculum at 50+ universities worldwide
                   </p>
                 </div>
               </div>
