@@ -18,6 +18,15 @@ import pnlpjapanese from "../assets/images/pnlpjapanese.jpg";
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin, FaGithub, FaGlobe, FaUserTie, FaBook, FaHandshake } from 'react-icons/fa';
 import rg from "../assets/icon/rgmu.png";
+import pic1 from "../assets/profile/8.png";
+import pic2 from  "../assets/profile/2.png";
+import pic3 from  "../assets/profile/3.png";
+import pic4 from  "../assets/profile/4.png"; 
+import pic5 from  "../assets/profile/5.png";
+import pic6 from  "../assets/profile/6.png";
+import pic7 from  "../assets/profile/1.png";
+import pic9 from  "../assets/profile/9pic.png";
+import sid from  "../assets/profile/sid.jpeg";
 
 // Placeholder book covers with consistent aspect ratios
 const bookCovers = [
@@ -450,47 +459,154 @@ function BookPage() {
                 </div>
 
                 {/* Endorsements */}
-                <div className="space-y-3">
-                  <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">
-                      Endorsed by the topmost AI leaders globally:
-                    </span>{" "}
-                    <NameLink href="https://www.acmilab.org/people/zachary-lipton/">
-                      Zachary Lipton
-                    </NameLink> (Professor, CS, Carnegie Mellon University; Director, Amazon Science),{" "}
-                    <NameLink href="https://ruder.io/">
-                      Sebastian Ruder
-                    </NameLink> (Lead, Multilingual Team, Cohere),{" "}
-                    <NameLink href="http://marc.najork.org/">
-                      Marc Najork
-                    </NameLink> (Director, DeepMind),{" "}
-                    <NameLink href="https://www.microsoft.com/en-us/research/people/monojitc/">
-                      Monojit Choudhury
-                    </NameLink> (Professor, MBZUAI; Ex Principal Scientist, Microsoft Research),{" "}
-                    <NameLink href="https://www.linkedin.com/in/vinayakh/">
-                      Vinayak Hegde
-                    </NameLink> (CTO, Microsoft for Startups),{" "}
-                    <NameLink href="https://mengtingwan.github.io/">
-                      Mengting Wan
-                    </NameLink> (Principal Scientist, Airbnb),{" "}
-                    <NameLink href="https://www.linkedin.com/in/siddharth-sharma-31140210/">
-                      Siddharth Sharma
-                    </NameLink> (Lead Applied Scientist, Amazon),{" "}
-                    <NameLink href="https://www.linkedin.com/in/e10is/">
-                      Edouard Harris
-                    </NameLink> (Co-founder @Gladstone AI, YC'18)
-                    .
-                  </p>
-                  <p className="text-gray-600">
-                    <span className="font-medium">Forward by</span>{" "}
-                    <NameLink href="https://cseweb.ucsd.edu/~jmcauley/">
-                      Julian McAuley
-                    </NameLink>
-                  </p>
-                  <p className="font-medium text-gray-600">
-                    Published by O'Reilly Media, US in June, 2020
-                  </p>
-                </div>
+                <div className="space-y-4">
+  <p className="text-gray-700">
+    <span className="font-semibold text-gray-900">
+      Endorsed by the topmost AI leaders globally:
+    </span>
+  </p>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic1}
+        alt="Zachary Lipton"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.acmilab.org/people/zachary-lipton/">
+          Zachary Lipton
+        </NameLink>{" "}
+        <br/>
+        Prof., CS, C M University     
+        Director, Amazon Science
+      </p>
+    </div>
+      <div className="flex items-center space-x-3">
+      <img
+        src={pic2}
+        alt="Monojit Choudhury"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.microsoft.com/en-us/research/people/monojitc/">
+          Monojit Choudhury
+        </NameLink>{" "}
+        <br/>
+        Prof., MBZUAI
+        <br/>
+        Ex Principal Scientist, Microsoft Research
+      </p>
+    </div>
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic7}
+        alt="Sebastian Ruder"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://ruder.io/">Sebastian Ruder</NameLink>{" "}
+        <br/>
+        Lead, Multilingual Team, Cohere
+      </p>
+    </div>
+
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic3}
+        alt="Marc Najork"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="http://marc.najork.org/">Marc Najork</NameLink>
+        <br/>
+         Director,DeepMind
+      </p>
+    </div> 
+
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic5}
+        alt="Vinayak Hegde"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.linkedin.com/in/vinayakh/">
+          Vinayak Hegde
+        </NameLink>{" "}
+        <br/>
+        CTO, Microsoft for Startups
+      </p>
+    </div>
+
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic4}
+        alt="Mengting Wan"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://mengtingwan.github.io/">Mengting Wan</NameLink>{" "}
+        <br/>
+        Principal Scientist, Airbnb
+      </p>
+    </div>
+
+    <div className="flex items-center space-x-3">
+      <img
+        src={sid}
+        alt="Siddharth Sharma"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.linkedin.com/in/siddharth-sharma-31140210/">
+          Siddharth Sharma
+          
+        </NameLink>{" "}
+        <br />
+        Lead Applied Scientist, Amazon
+      </p>
+    </div>
+
+    <div className="flex items-center space-x-3">
+      <img
+        src={pic9}
+        alt="Edouard Harris"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.linkedin.com/in/e10is/">
+          Edouard Harris
+        </NameLink>{" "}
+        <br/>
+        Co-founder @Gladstone AI, YC'18
+      </p>
+    </div>
+  </div>
+
+  <p className="text-gray-600">
+    <span className="font-medium">Forward by</span>{" "}
+        <div className="flex items-center space-x-3">
+      <img
+        src={pic6}
+        alt="Julian McAuley"
+        className="w-10 h-10 rounded-full object-cover shadow"
+      />
+      <p className="text-gray-700">
+        <NameLink href="https://www.linkedin.com/in/siddharth-sharma-31140210/">     
+          Julian McAuley
+        </NameLink>{" "}       
+        <br />
+        Professor of CS, US San Diego
+      </p>
+    </div>
+  </p>
+
+  <p className="font-medium text-gray-600">
+    Published by O'Reilly Media, US in June, 2020
+  </p>
+</div>
+
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap justify-center gap-4 pt-4">
