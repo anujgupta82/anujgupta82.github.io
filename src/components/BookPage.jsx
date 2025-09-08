@@ -585,7 +585,7 @@ function BookPage() {
   </div>
 
   <p className="text-gray-600">
-    <span className="font-medium">Forward by</span>{" "}
+    <span className="font-medium">Foreword by</span>{" "}
         <div className="flex items-center space-x-3">
       <img
         src={pic6}
